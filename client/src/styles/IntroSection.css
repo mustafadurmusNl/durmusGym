@@ -1,0 +1,33 @@
+.intro-section {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #4a6077;
+  }
+  
+  .intro-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .intro-section .btn {
+    background-color: #1fd312;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-size: 2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .intro-section .btn:hover {
+    background-color: #0056b3;
+  }
+  

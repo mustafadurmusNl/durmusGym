@@ -1,0 +1,48 @@
+/* src/styles/PTOption.css */
+.option-card {
+    width: 30%;
+    padding: 2rem;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .option-card h3 {
+    color:green;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .option-card p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .option-card .btn-more-info {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #1fd312;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .option-card .description {
+    text-align: left;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .option-card .description ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .option-card .description li {
+    margin-bottom: 0.5rem;
+  }
+  
