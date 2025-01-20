@@ -10,7 +10,7 @@ const NavBar = () => {
           <img src="/logo.png" alt="DurmusGym Logo" className="navbar-logo" />
         </Link>
         <Link to="/" className="brand-name">
-          DurmusGym
+          DurmussGym
         </Link>
       </div>
       <ul className="navbar-links">
