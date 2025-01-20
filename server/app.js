@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');  // Import path to serve static files
+
 const mediaRoutes = require('./routes/mediaRoutes');
 
 const app = express();
@@ -18,5 +20,16 @@ app.get('/', (req, res) => {
 
 // Routes
 app.use('/api', mediaRoutes);
+
+// Serve static files from the React app (for production)
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from the React build folder
+  app.use(express.static(path.join(__dirname, '../client/build')));
+
+  // All other routes should serve the React app's index.html file
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  });
+}
 
 module.exports = app;
