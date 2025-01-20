@@ -16,6 +16,8 @@ const HomePage = () => {
     };
 
     getImages();
+     // Ensure the page scrolls to the top when it's loaded
+     window.scrollTo(0, 0);
   }, []);
 
   return (
