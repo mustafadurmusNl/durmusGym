@@ -27,8 +27,8 @@ const HomePage = () => {
         <>
           {images.length > 0 && (
             <>
-              <IntroSection image={images[2]?.src?.large} />
-              <PersonalApproach image={images[9]?.src?.large} />
+              <IntroSection image={images[3]?.src?.large} />
+              <PersonalApproach image={images[19]?.src?.large} />
             </>
           )}
           <OptionsSection />

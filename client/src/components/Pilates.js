@@ -28,7 +28,7 @@ const Pilates = () => {
             <div className="hero-section">
               <div className="image-content">
                 <img
-                  src={images[2]?.src?.large} // Use the fetched image here
+                  src={images[5]?.src?.large} // Use the fetched image here
                   alt="Pilates at KoepelGym"
                   className="hero-image"
                 />
