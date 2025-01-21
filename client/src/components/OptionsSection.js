@@ -2,7 +2,7 @@
 import React from 'react';
 import PTOption from './PTOption';
 import DuoTraining from './DuoTraining';
-import Pilates from './Pilates';
+import PilatesOption from './PilatesOption';
 import '../styles/OptionsSection.css';
 
 const OptionsSection = () => {
@@ -10,7 +10,7 @@ const OptionsSection = () => {
     <div className="options-section">
       <PTOption />
       <DuoTraining />
-      <Pilates />
+      <PilatesOption />
     </div>
   );
 };

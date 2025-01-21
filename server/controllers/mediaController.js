@@ -16,7 +16,8 @@ const getImages = async (req, res) => {
         },
         params: {
           query: 'gym',
-          per_page: 10,
+          per_page: 80,
+          page:2,
         },
       });
       res.json(response.data.photos);

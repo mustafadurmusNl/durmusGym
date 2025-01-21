@@ -1,16 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavBar from "./components/Navbar"; // Import the NavBar component
-import HomePage from "./pages/HomePage"; // Import the HomePage component
+import NavBar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import PersonalTraining from "./components/PersonalTraining"; // Import the PersonalTraining component
+import Pilates from "./components/Pilates"; // Import the Pilates component
 
 const App = () => {
   return (
     <Router>
       <NavBar />
       <Routes>
-        <Route path="/" element={<HomePage />} /> {/* Use HomePage here */}
-        <Route path="/personal-training" element={<h1>Personal Training</h1>} />
-        <Route path="/pilates" element={<h1>Pilates</h1>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/personal-training" element={<PersonalTraining />} />
+        <Route path="/pilates" element={<Pilates />} /> {/* Use Pilates component here */}
         <Route path="/diet" element={<h1>Diet</h1>} />
         <Route path="/about" element={<h1>About</h1>} />
         <Route path="/method" element={<h1>Method</h1>} />
