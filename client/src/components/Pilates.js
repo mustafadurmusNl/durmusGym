@@ -34,10 +34,10 @@ const Pilates = () => {
                 />
               </div>
               <div className="text-content">
-                <h1>Pilates at KoepelGym in Bergen op Zoom</h1>
+                <h1>Pilates at DurmusGym in Bergen op Zoom</h1>
                 <p>Strengthen your balance and improve your flexibility</p>
                 <p>
-                  At KoepelGym we offer Pilates classes that help you strengthen
+                  At DurmusGym we offer Pilates classes that help you strengthen
                   your balance, improve your flexibility, and promote your muscle
                   strength. Whether you are a beginner or already experienced, our
                   Pilates classes are tailored to meet your level and needs.
@@ -50,7 +50,7 @@ const Pilates = () => {
                   together your own group with friends, family, or acquaintances.
                 </p>
                 <p>
-                  Private Pilates lessons at KoepelGym in Bergen op Zoom are
+                  Private Pilates lessons at DurmusGym in Bergen op Zoom are
                   available from €49.99 per 4 weeks. Start today and experience
                   the benefits of Pilates!
                 </p>
