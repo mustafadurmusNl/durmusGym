@@ -106,7 +106,7 @@
   .cta-button,
   .send-button {
     padding: 15px 30px;
-    background-color: #28a745;
+    background-color: green;
     color: white;
     border: none;
     border-radius: 4px;
@@ -115,10 +115,7 @@
     transition: background-color 0.3s ease;
   }
   
-  .cta-button:hover,
-  .send-button:hover {
-    background-color: #218838;
-  }
+
   
   .cta-button:active,
   .send-button:active {

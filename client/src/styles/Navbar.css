@@ -43,12 +43,9 @@
   transition: color 0.3s;
 }
 
-.navbar-links a:hover {
-  color: #f39c12;
-}
 
 .cta {
-  background-color: #f39c12;
+  background-color: green;
   padding: 8px 15px; /* Slightly larger padding for the button */
   border-radius: 5px;
   color: #fff;
@@ -56,6 +53,4 @@
   font-size: 1rem;
 }
 
-.cta:hover {
-  background-color: #e67e22;
-}
+

@@ -17,17 +17,12 @@
   }
   
   .intro-section .btn {
-    background-color: #1fd312;
+    background-color:green;
     color: white;
     padding: 0.75rem 1.5rem;
-    font-size: 2rem;
+    font-size: 3rem;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     text-decoration: none;
   }
-  
-  .intro-section .btn:hover {
-    background-color: #0056b3;
-  }
-  

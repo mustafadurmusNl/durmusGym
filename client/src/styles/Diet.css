@@ -1,0 +1,78 @@
+/* Ensure the body and html fill the viewport */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #1c1c1c; /* Dark background for the entire page */
+  font-family: Arial, sans-serif; /* Consistent font */
+  color: #ffffff; /* White text for better readability */
+}
+
+/* Main Diet container */
+.diet-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Full width */
+  background-color: #1c1c1c; /* Matches page background */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in dimensions */
+  gap: 20px;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+}
+
+/* Image container */
+.diet-image {
+  flex: 1; /* Take up half the width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.diet-image img {
+  max-width: 100%; /* Ensure image doesn’t overflow */
+  max-height: 100%; /* Keep image height proportional */
+  border-radius: 10px; /* Rounded corners */
+  object-fit: cover; /* Ensure the image fills its container */
+}
+
+/* Content container */
+.diet-content {
+  flex: 1; /* Take up half the width */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Center align text */
+  gap: 20px; /* Add space between elements */
+}
+
+/* Heading styling */
+.diet-content h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+/* Paragraph styling */
+.diet-content p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Button styling */
+.diet-content button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #28a745; /* Green background */
+  color: #ffffff; /* White text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.diet-content button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
