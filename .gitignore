@@ -8,6 +8,9 @@ client/.env.development.local
 client/.env.test.local
 client/.env.production.local
 
+client/*
+!client/package-lock.json
+
 # Ignore build folders
 client/build/
 server/build/
