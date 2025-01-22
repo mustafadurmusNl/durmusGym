@@ -13,10 +13,7 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Define a route for the root URL
-app.get('/', (req, res) => {
-  res.send('Hello, world!');
-});
+
 
 // Routes
 app.use('/api', mediaRoutes);
