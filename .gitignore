@@ -10,11 +10,15 @@ client/.env.production.local
 
 client/*
 !client/package-lock.json
+client/*
+!client/public/
+!client/public/logo192.png
+!client/public/logo512.png
 
 # Ignore build folders
 client/build/
 server/build/
-
+afye
 # Ignore IDE/editor config files
 .vscode/
 .idea/
