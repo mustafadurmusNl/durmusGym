@@ -8,9 +8,9 @@ client/.env.development.local
 client/.env.test.local
 client/.env.production.local
 
-client/*
+
 !client/package-lock.json
-client/*
+
 !client/public/
 !client/public/logo192.png
 !client/public/logo512.png

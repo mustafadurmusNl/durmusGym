@@ -1,0 +1,141 @@
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .about-left,
+  .about-right {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .about-left {
+    max-width: 500px;
+  }
+  
+  .about-left h2 {
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+  .about-left p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: white
+  }
+  
+  .about-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  .send-button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .send-button:hover {
+    background-color: #219150;
+  }
+  
+  .about-right {
+    text-align: center;
+  }
+  .map-container {
+    width: 100%; /* Ensure it spans the full width */
+    max-width: 500px; /* Optional: limit the width if necessary */
+    margin: 0 auto; /* Center the map */
+  }
+  
+  
+  .whatsapp-button {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .whatsapp-button i {
+    margin-right: 8px;
+  }
+  
+  .whatsapp-button:hover {
+    background-color: #20c157;
+  }
+  
+  .contact-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #34495e;
+  }
+  
+  .about-contact-row {
+    display: flex;
+    justify-content: space-between; /* Distribute space between items */
+    align-items: center; /* Vertically align items */
+    margin-top: 20px; /* Add spacing above the row */
+    gap: 20px; /* Space between the two sections */
+  }
+  
+  .whatsapp-section {
+    text-align: center;
+    flex: 1; /* Ensure equal width for both sections */
+  }
+  
+  .contact-info {
+    text-align: center;
+    flex: 1; /* Ensure equal width for both sections */
+  }
+  
+  .contact-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: white
+  }
+  
+  .whatsapp-button {
+    display: inline-block;
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .whatsapp-button:hover {
+    background-color: #20c157;
+  }
+  
