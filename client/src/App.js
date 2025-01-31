@@ -7,6 +7,7 @@ import PersonalTraining from "./components/PersonalTraining";
 import Diet from "./components/Diet"; 
 import About from "./components/About";
 import Pilates from "./components/Pilates";
+import Method from "./components/Method";
 const App = () => {
   return (
     <Router>
@@ -17,7 +18,7 @@ const App = () => {
         <Route path="/pilates" element={<Pilates />} /> 
         <Route path="/diet" element={<Diet />} /> 
         <Route path="/about" element={<About />} /> 
-        <Route path="/method" element={<h1>Method</h1>} />
+        <Route path="/method" element={<Method />} /> 
         <Route path="/contact" element={<h1>Contact</h1>} />
         <Route path="/free-trial" element={<h1>Free Trial Lesson</h1>} />
       </Routes>

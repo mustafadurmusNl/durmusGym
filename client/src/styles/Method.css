@@ -1,0 +1,43 @@
+.method-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .method-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .method-steps {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  
+  .method-step {
+    max-width: 300px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .method-step img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  .method-step h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+  
+  .method-step p {
+    margin-top: 10px;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
