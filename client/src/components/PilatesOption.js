@@ -8,7 +8,7 @@ const Pilates = () => {
     <div className="option-card">
       <h3>Pilates</h3>
       <p>Up to 4 people</p>
-      <Link to="/free-trial" className="btn-more-info">More Information</Link>
+      <Link to="/pilates" className="btn-more-info">More Information</Link>
       <div className="description">
         <ul>
           <li>✓ Pilates in our studio in Bergen op Zoom</li>
