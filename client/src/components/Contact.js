@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/About.css"; // Optional: for styling
+import "../styles/Contact.css"; // Optional: for styling
 
-const About = () => {
+const Contact = () => {
   return (
     <div className="about-container">
       {/* Left Section */}
@@ -61,4 +61,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Contact;
