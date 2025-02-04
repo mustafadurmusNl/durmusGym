@@ -8,6 +8,7 @@ import Diet from "./components/Diet";
 import Contact from "./components/Contact";
 import Pilates from "./components/Pilates";
 import Method from "./components/Method";
+import About from "./components/About";
 const App = () => {
   return (
     <Router>
@@ -19,7 +20,7 @@ const App = () => {
         <Route path="/diet" element={<Diet />} /> 
         <Route path="/contact" element={<Contact />} /> 
         <Route path="/method" element={<Method />} /> 
-        <Route path="/contact" element={<h1>About</h1>} />
+        <Route path="/about"element={<About />} />
         <Route path="/free-trial" element={<h1>Free Trial Lesson</h1>} />
       </Routes>
     </Router>
