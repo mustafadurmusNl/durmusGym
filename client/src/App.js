@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import Pilates from "./components/Pilates";
 import Method from "./components/Method";
 import About from "./components/About";
+import Footer from "./components/Footer";
 const App = () => {
   return (
     <Router>
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/free-trial" element={<Contact />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
