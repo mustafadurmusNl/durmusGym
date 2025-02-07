@@ -17,7 +17,7 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Socials</h3>
           <div className="footer-icons">
-            <a href="#" className="social-icon instagram">
+            <a href="https://www.instagram.com/mdurmusnl1" className="social-icon instagram">
               <FaInstagram />
             </a>
             <a href="#" className="social-icon whatsapp">
