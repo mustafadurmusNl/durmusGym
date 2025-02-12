@@ -1,8 +1,12 @@
-import React from "react";
+// src/components/NavBar.js
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import "../styles/Navbar.css"; // Add a CSS file for styling
+import { LanguageContext } from "../context/languageContext"; // Import LanguageContext
+import "../styles/Navbar.css";
 
 const NavBar = () => {
+  const { selectedLang, changeLanguage } = useContext(LanguageContext); // Access language context
+
   return (
     <nav className="navbar">
       <div className="navbar-brand">
@@ -10,32 +14,50 @@ const NavBar = () => {
           <img src="/logo.png" alt="DurmusGym Logo" className="navbar-logo" />
         </Link>
         <Link to="/" className="brand-name">
-          DurmussGym
+          DurmusGym
         </Link>
       </div>
       <ul className="navbar-links">
         <li>
-          <Link to="/personal-training">Personal Training</Link>
+          <Link to="/personal-training">
+            {selectedLang === "en" ? "Personal Training" : selectedLang === "nl" ? "Persoonlijke Training" : "Kişisel Eğitim"}
+          </Link>
         </li>
         <li>
-          <Link to="/pilates">Pilates</Link>
+          <Link to="/pilates">
+            {selectedLang === "en" ? "Pilates" : selectedLang === "nl" ? "Pilates" : "Pilates"}
+          </Link>
         </li>
         <li>
-          <Link to="/diet">Diet</Link>
+          <Link to="/diet">
+            {selectedLang === "en" ? "Diet" : selectedLang === "nl" ? "Dieet" : "Diyet"}
+          </Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/about">
+            {selectedLang === "en" ? "About" : selectedLang === "nl" ? "Over" : "Hakkında"}
+          </Link>
         </li>
         <li>
-          <Link to="/method">Method</Link>
+          <Link to="/method">
+            {selectedLang === "en" ? "Method" : selectedLang === "nl" ? "Methode" : "Yöntem"}
+          </Link>
         </li>
         <li>
-          <Link to="/contact">Contact</Link>
+          <Link to="/contact">
+            {selectedLang === "en" ? "Contact" : selectedLang === "nl" ? "Contact" : "İletişim"}
+          </Link>
         </li>
         <li>
           <Link to="/free-trial" className="cta">
-            Free Trial Lesson
+            {selectedLang === "en" ? "Free Trial Lesson" : selectedLang === "nl" ? "Gratis Proefles" : "Ücretsiz Deneme Dersi"}
           </Link>
+        </li>
+        {/* Language Switcher */}
+        <li className="language-switcher">
+          <button onClick={() => changeLanguage("en")}>EN</button>
+          <button onClick={() => changeLanguage("nl")}>NL</button>
+          <button onClick={() => changeLanguage("tr")}>TR</button>
         </li>
       </ul>
     </nav>
