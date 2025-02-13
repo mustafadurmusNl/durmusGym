@@ -1,28 +1,34 @@
-// src/context/LanguageContext.js
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect } from "react";
+import { fetchLanguage } from "../services/languageService"; // Import language fetch function
 
-// Create Context for Language
 const LanguageContext = createContext();
 
 const LanguageProvider = ({ children }) => {
-  const [selectedLang, setSelectedLang] = useState('en'); // Default to 'en'
+  const [selectedLang, setSelectedLang] = useState("en"); // Default language
+  const [translations, setTranslations] = useState({}); // Store fetched translations
 
-  // Retrieve language from localStorage or set to default
+  // Retrieve saved language from localStorage
   useEffect(() => {
-    const savedLang = localStorage.getItem('selectedLang');
-    if (savedLang) {
-      setSelectedLang(savedLang);
-    }
+    const savedLang = localStorage.getItem("selectedLang") || "en";
+    setSelectedLang(savedLang);
+    loadTranslations(savedLang);
   }, []);
 
-  // Update language and save to localStorage
+  // Fetch translations when language changes
+  const loadTranslations = async (langCode) => {
+    const fetchedTranslations = await fetchLanguage(langCode);
+    setTranslations(fetchedTranslations);
+  };
+
+  // Change language function
   const changeLanguage = (lang) => {
     setSelectedLang(lang);
-    localStorage.setItem('selectedLang', lang); // Store language choice in localStorage
+    localStorage.setItem("selectedLang", lang);
+    loadTranslations(lang); // Fetch new translations
   };
 
   return (
-    <LanguageContext.Provider value={{ selectedLang, changeLanguage }}>
+    <LanguageContext.Provider value={{ selectedLang, translations, changeLanguage }}>
       {children}
     </LanguageContext.Provider>
   );

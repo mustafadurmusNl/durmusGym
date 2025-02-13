@@ -30,7 +30,7 @@ router.get("/:code", async (req, res) => {
   try {
     const language = await Language.findOne({ code: req.params.code });
     if (!language) return res.status(404).json({ message: "❌ Language not found" });
-    res.json(language);
+    res.json(language.translations);
   } catch (err) {
     res.status(500).json({ error: "❌ Error fetching language" });
   }

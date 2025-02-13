@@ -1,48 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { fetchImages } from "../services/mediaService"; // Import fetchImages function
-import "../styles/PersonalTraining.css"; // Create and use a CSS file for styling
+import useTranslation from "../hooks/useTranslation"; // Import custom hook
+import { fetchImages } from "../services/mediaService"; // Import image fetch API
+import "../styles/PersonalTraining.css";
 
 const PersonalTraining = () => {
+  const { translations, isLoading } = useTranslation("personalTrainingPage"); // Fetch translations for this page
   const [images, setImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Add loading state
+  const [isImagesLoading, setIsImagesLoading] = useState(true); // Image loading state
 
   useEffect(() => {
     const getImages = async () => {
-      const data = await fetchImages();
-      setImages(data);
-      setIsLoading(false); // Set loading to false once images are fetched
+      try {
+        const data = await fetchImages();
+        setImages(data);
+        setIsImagesLoading(false); // Stop loading once images are fetched
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
     };
 
-    getImages();
+    getImages(); // Fetch images once on component mount
   }, []);
+
+  //console.log("Translations for PersonalTraining page:", translations); // Log translations object
+
+  // Render Loading State if translations are still loading
+  if (isLoading) {
+    return <div>Loading translations...</div>; // Show a loading text if translations are being fetched
+  }
+
+  // Render if no translations are found (fallback)
+  if (!translations) {
+    return <div>No translations available for PersonalTraining page.</div>;
+  }
 
   return (
     <div className="personal-training-container">
       {/* First Section */}
       <div className="hero-section">
         <div className="text-content">
-          <h1>Personal Training</h1>
-          <p>At your own pace to your goals!</p>
-          <p>
-            At DurmusGym in Bergen op Zoom, your health and comfort come first.
-            Our personal guidance helps you achieve your fitness goals in a calm
-            manner, without pressure. We adapt the training to your wishes and
-            pace.
-          </p>
-          <p>
-            DurmusGym guides a wide range of clients, from children to seniors
-            who want to improve their strength, fitness or mobility. Whether you
-            want to lose weight, get stronger or improve your fitness, we are
-            here to support you in becoming the best version of yourself.
-          </p>
+          <h1>{translations.title || "Loading..."}</h1>
+          <p>{translations.subtitle || "Loading..."}</p>
+          <p>{translations.description || "Loading..."}</p>
           <Link to="/free-trial">
-            <button className="cta-button">Free Trial Lesson</button>
+            <button className="cta-button">{translations.freeTrialText || "Loading..."}</button>
           </Link>
         </div>
         <div className="image-content">
-          {isLoading ? (
-            <p>Loading image...</p> // Show a loading indicator while images are being fetched
+          {isImagesLoading ? (
+            <p>Loading image...</p> // Show loading text while images are being fetched
           ) : (
             images.length > 0 && (
               <img
@@ -57,62 +64,35 @@ const PersonalTraining = () => {
 
       {/* Second Section */}
       <div className="details-section">
-        <h2>Try it for free</h2>
-        <p>
-          Do you want to work effectively and personally on your fitness goals?
-          At KoepelGym in Bergen op Zoom we offer tailor-made personal training
-          programs that are fully aligned with your pace and needs.
-        </p>
-        <p>
-          Thanks to our professional guidance and modern tools such as an iPad
-          and Apple Watch, we closely monitor your progress and ensure
-          measurable results.
-        </p>
-        <p>
-          Start a free trial lesson today and discover how we can help you
-          become fitter, stronger and healthier.
-        </p>
+        <h2>{translations.tryForFree || "Try it for free"}</h2>
+        <p>{translations.description2 || "Do you want to work effectively and personally on your fitness goals?"}</p>
+        <p>{translations.description3 || "At KoepelGym, we offer tailor-made personal training programs to fit your needs."}</p>
+        <p>{translations.description4 || "Start a free trial lesson today and discover how we can help you become fitter, stronger, and healthier."}</p>
 
         {/* Form Section */}
         <form className="trial-form">
           <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your Name" />
+            <label htmlFor="name">{translations.name || "Name"}</label>
+            <input type="text" id="name" name="name" placeholder={translations.placeholderName || "Your Name"} />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Your Email Address"
-            />
+            <label htmlFor="email">{translations.email || "Email Address"}</label>
+            <input type="email" id="email" name="email" placeholder={translations.placeholderEmail || "Your Email Address"} />
           </div>
           <div className="form-group">
-            <label htmlFor="phone">Phone Number</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="Your Phone Number"
-            />
+            <label htmlFor="phone">{translations.phone || "Phone Number"}</label>
+            <input type="tel" id="phone" name="phone" placeholder={translations.placeholderPhone || "Your Phone Number"} />
           </div>
           <div className="form-group">
-            <label htmlFor="comments">Comments</label>
-            <textarea
-              id="comments"
-              name="comments"
-              rows="4"
-              placeholder="Availability, questions about the working method, etc."
-            ></textarea>
+            <label htmlFor="comments">{translations.comments || "Comments"}</label>
+            <textarea id="comments" name="comments" rows="4" placeholder={translations.placeholderComments || "Availability, questions, etc."}></textarea>
           </div>
           <button type="submit" className="send-button">
-            Send
+            {translations.sendButton || "Send"}
           </button>
         </form>
       </div>
     </div>
   );
 };
-
 export default PersonalTraining;
