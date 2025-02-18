@@ -12,7 +12,6 @@ const LanguageSchema = new mongoose.Schema({
     contact: String,
     freeTrial: String,
 
-    // ✅ Add Page Content Translations
     personalTrainingPage: {
       title: String,
       subtitle: String,
@@ -32,27 +31,45 @@ const LanguageSchema = new mongoose.Schema({
       placeholderComments: String,
       sendButton: String
     },
+    
     pilatesPage: {
       title: String,
       subtitle: String,
       description: String,
-      freeTrialText: String
+      description2: String,
+      description3: String,
+      description4: String,
+      priceInfo: String,
+      freeTrialText: String,
+      name: String,
+      email: String,
+      phone: String,
+      comments: String,
+      placeholderName: String,
+      placeholderEmail: String,
+      placeholderPhone: String,
+      placeholderComments: String,
+      sendButton: String
     },
+    
     aboutPage: {
       title: String,
       subtitle: String,
       description: String
     },
+    
     contactPage: {
       title: String,
       subtitle: String,
       description: String
     },
+    
     dietPage: {
       title: String,
       subtitle: String,
       description: String
     },
+    
     methodPage: {
       title: String,
       subtitle: String,
