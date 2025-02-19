@@ -41,7 +41,7 @@ const LanguageSchema = new mongoose.Schema({
       description4: String,
       priceInfo: String,
       freeTrialText: String,
-      tryForFree: String, // Added this field
+      tryForFree: String,
       name: String,
       email: String,
       phone: String,
@@ -53,17 +53,45 @@ const LanguageSchema = new mongoose.Schema({
       sendButton: String
     },
 
-    aboutPage: {
+    dietPage: {
       title: String,
       subtitle: String,
       description: String,
-      approachTitle: String,
-      approachText: String,
-      nutritionTitle: String,
-      nutritionText: String,
-      sweetsTitle: String,
-      sweetsText: String,
-      contactMe: String
+      description2: String,
+      description3: String,
+      description4: String,
+      formTitle: String,
+      freeTrialText: String,
+      name: String,
+      email: String,
+      phone: String,
+      placeholderName: String,
+      placeholderEmail: String,
+      placeholderPhone: String,
+      sendButton: String
+    },
+
+    aboutPage: {
+      title: String,
+      welcomeMessage: String,
+      approach: String,
+      trainingMethods: String,
+      nutritionFocus: String,
+      homemadeSweets: String,
+      fitnessGoalSupport: String,
+      contactButton: String
+    },
+
+    methodPage: {
+      title: String,
+      subtitle: String,
+      description: String,
+      steps: [
+        {
+          stepTitle: String,
+          stepDescription: String
+        }
+      ]
     },
 
     contactPage: {
@@ -84,36 +112,6 @@ const LanguageSchema = new mongoose.Schema({
       whatsappButton: String,
       emailContact: String,
       phoneContact: String
-    },
-
-    dietPage: {
-      title: String,
-      subtitle: String,
-      description: String,
-      description2: String,
-      description3: String,
-      description4: String,
-      formTitle: String,
-      freeTrialText: String, // Added this field
-      name: String,
-      email: String,
-      phone: String,
-      placeholderName: String,
-      placeholderEmail: String,
-      placeholderPhone: String,
-      sendButton: String
-    },
-
-    methodPage: {
-      title: String,
-      subtitle: String,
-      description: String,
-      steps: [
-        {
-          stepTitle: String,
-          stepDescription: String
-        }
-      ]
     }
   }
 });
