@@ -31,7 +31,7 @@ const LanguageSchema = new mongoose.Schema({
       placeholderComments: String,
       sendButton: String
     },
-    
+
     pilatesPage: {
       title: String,
       subtitle: String,
@@ -41,6 +41,7 @@ const LanguageSchema = new mongoose.Schema({
       description4: String,
       priceInfo: String,
       freeTrialText: String,
+      tryForFree: String, // Added this field
       name: String,
       email: String,
       phone: String,
@@ -51,29 +52,68 @@ const LanguageSchema = new mongoose.Schema({
       placeholderComments: String,
       sendButton: String
     },
-    
+
     aboutPage: {
       title: String,
       subtitle: String,
-      description: String
+      description: String,
+      approachTitle: String,
+      approachText: String,
+      nutritionTitle: String,
+      nutritionText: String,
+      sweetsTitle: String,
+      sweetsText: String,
+      contactMe: String
     },
-    
+
     contactPage: {
       title: String,
       subtitle: String,
-      description: String
+      description: String,
+      formTitle: String,
+      name: String,
+      email: String,
+      phone: String,
+      message: String,
+      placeholderName: String,
+      placeholderEmail: String,
+      placeholderPhone: String,
+      placeholderMessage: String,
+      sendButton: String,
+      whatsappText: String,
+      whatsappButton: String,
+      emailContact: String,
+      phoneContact: String
     },
-    
+
     dietPage: {
       title: String,
       subtitle: String,
-      description: String
+      description: String,
+      description2: String,
+      description3: String,
+      description4: String,
+      formTitle: String,
+      freeTrialText: String, // Added this field
+      name: String,
+      email: String,
+      phone: String,
+      placeholderName: String,
+      placeholderEmail: String,
+      placeholderPhone: String,
+      sendButton: String
     },
-    
+
     methodPage: {
       title: String,
       subtitle: String,
-      description: String
+      description: String,
+      steps: [
+        {
+          stepTitle: String,
+          stepDescription: String
+        }
+      ]
     }
   }
 });
