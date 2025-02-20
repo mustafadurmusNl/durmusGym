@@ -1,40 +1,47 @@
 import React, { useEffect, useState } from "react";
+import useTranslation from "../hooks/useTranslation"; // Import translation hook
 import { fetchImages } from "../services/mediaService";
 import "../styles/Method.css"; 
 
 const Method = () => {
+  const { translations, isLoading } = useTranslation("methodPage"); // Fetch translations for this page
   const [images, setImages] = useState([]);
+  const [isImagesLoading, setIsImagesLoading] = useState(true);
 
   useEffect(() => {
     const loadImages = async () => {
-      const fetchedImages = await fetchImages();
-      if (fetchedImages && fetchedImages.length > 0) {
+      try {
+        const fetchedImages = await fetchImages();
         setImages(fetchedImages.map(img => img.src.large));
+        setIsImagesLoading(false);
+      } catch (error) {
+        console.error("Error fetching images:", error);
       }
     };
     loadImages();
   }, []);
 
-  const steps = [
-    { title: "Step1 : Getting to know each other", description: "During this introductory meeting we will discuss your fitness goals, any limitations or injuries and your training history. We will get to know each other and tune in to your personal needs and wishes." },
-    { title: "Step 2 : Trial lesson", description: "The trial lesson gives you the chance to try out our training methods under supervision. We adapt the training to your level and needs, so that you get a good idea of ​​what we have to offer." },
-    { title: "Step 3 : Objectives", description: "After a trial lesson, we will discuss your experience and determine specific fitness goals. We will also include any limitations or special requirements in the personal plan." },
-    { title: "Step 4 : Transform", description: "Based on your goals and personal situation, we create a personalized training schedule. During the training sessions, we work together to achieve your goals, with regular evaluations and adjustments if necessary." },
-  ];
+  if (isLoading) {
+    return <div>Loading translations...</div>;
+  }
+
+  if (!translations || !translations.steps) {
+    return <div>No translations available for this page.</div>;
+  }
 
   return (
     <div className="method-container">
-      <h1 className="method-title">Our Working Method</h1>
+      <h1 className="method-title">{translations.title || "Our Working Method"}</h1>
       <div className="method-steps">
-        {steps.map((step, index) => (
+        {translations.steps.map((step, index) => (
           <div key={index} className="method-step">
-            <h2>{step.title}</h2>
-            {images[index] ? (
-              <img src={images[index+6]} alt={step.title} />
-            ) : (
+            <h2>{step.stepTitle || `Step ${index + 1}`}</h2>
+            {isImagesLoading ? (
               <p>Loading image...</p>
+            ) : (
+              images[index] && <img src={images[index]} alt={step.stepTitle} />
             )}
-            <p>{step.description}</p>
+            <p>{step.stepDescription || "Description not available"}</p>
           </div>
         ))}
       </div>
