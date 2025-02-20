@@ -1,8 +1,8 @@
-// src/components/IntroSection.js
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/IntroSection.css";
-const IntroSection = ({ image }) => {
+
+const IntroSection = ({ image, translations }) => {
   return (
     <div
       className="intro-section"
@@ -19,9 +19,9 @@ const IntroSection = ({ image }) => {
         textAlign: "center",
       }}
     >
-      <h1>Your journey to strength, health, and fitness starts here.</h1>
+      <h1>{translations?.title || "Your journey to strength, health, and fitness starts here."}</h1>
       <Link to="/personal-training" className="btn btn-primary">
-        Discover More
+        {translations?.button || "Discover More"}
       </Link>
     </div>
   );

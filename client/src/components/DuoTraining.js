@@ -3,10 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/DuoTraining.css';
 
-const DuoTraining = () => {
+const DuoTraining = ({ title }) => {
   return (
     <div className="option-card">
-      <h3>Duo Training</h3>
+      <h3>{title || "Duo Training"}</h3>
       <p>2-on-1</p>
       <Link to="/free-trial" className="btn-more-info">More Information</Link>
       <div className="description">

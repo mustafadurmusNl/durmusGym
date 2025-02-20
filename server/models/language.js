@@ -12,6 +12,34 @@ const LanguageSchema = new mongoose.Schema({
     contact: String,
     freeTrial: String,
 
+    homePage: {
+      intro: {
+        title: String,
+        button: String
+      },
+      personalApproach: {
+        title: String,
+        description: String,
+        button: String
+      },
+      options: {
+        personalTraining: String,
+        duoTraining: String,
+        pilates: String
+      },
+      signup: {
+        title: String,
+        description1: String,
+        description2: String,
+        namePlaceholder: String,
+        emailPlaceholder: String,
+        phonePlaceholder: String,
+        messagePlaceholder: String,
+        sendButton: String,
+        whatsappButton: String
+      }
+    },
+
     personalTrainingPage: {
       title: String,
       subtitle: String,
