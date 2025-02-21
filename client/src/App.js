@@ -11,7 +11,8 @@ import Pilates from "./components/Pilates";
 import Method from "./components/Method";
 import About from "./components/About";
 import Footer from "./components/Footer";
-
+import Yoga from "./components/Yoga";
+import "./i18n"; 
 const App = () => {
   return (
     <LanguageProvider> {/* Wrap your app with LanguageProvider */}
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/method" element={<Method />} /> 
           <Route path="/about" element={<About />} />
           <Route path="/free-trial" element={<Contact />} />
+          <Route path="/yoga" element={<Yoga />} />
         </Routes>
         <Footer />
       </Router>

@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import i18n from "../i18n"; // Import i18n to sync it
 import { fetchLanguage } from "../services/languageService"; // Import language fetch function
 
 const LanguageContext = createContext();
@@ -9,6 +10,9 @@ const LanguageProvider = ({ children }) => {
 
   // Retrieve saved language from localStorage
   useEffect(() => {
+
+     // Sync i18n.js language with context
+     i18n.changeLanguage(selectedLang);
     const savedLang = localStorage.getItem("selectedLang") || "en";
     setSelectedLang(savedLang);
     loadTranslations(savedLang);
@@ -25,6 +29,7 @@ const LanguageProvider = ({ children }) => {
     setSelectedLang(lang);
     localStorage.setItem("selectedLang", lang);
     loadTranslations(lang); // Fetch new translations
+    i18n.changeLanguage(lang); // Update i18n.js language
   };
 
   return (
