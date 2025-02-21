@@ -23,7 +23,14 @@ const LanguageSchema = new mongoose.Schema({
         button: String
       },
       options: {
-        personalTraining: String,
+        personalTraining: {
+          title: String,
+          privateGym: String,
+          customSchedules: String,
+          personalCoach: String,
+          nutritionalGuidance: String,
+          tailoredSessions: String
+        },
         duoTraining: String,
         pilates: String
       },

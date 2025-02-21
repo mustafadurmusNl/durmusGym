@@ -5,9 +5,11 @@ import PilatesOption from "./PilatesOption";
 import "../styles/OptionsSection.css";
 
 const OptionsSection = ({ translations }) => {
+  console.log("OptionsSection Translations:", translations);
+
   return (
     <div className="options-section">
-      <PTOption title={translations?.personalTraining} />
+      <PTOption translations={translations?.personalTraining} />
       <DuoTraining title={translations?.duoTraining} />
       <PilatesOption title={translations?.pilates} />
     </div>
