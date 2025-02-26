@@ -29,10 +29,26 @@ const LanguageSchema = new mongoose.Schema({
           customSchedules: String,
           personalCoach: String,
           nutritionalGuidance: String,
-          tailoredSessions: String
+          tailoredSessions: String,
+          moreInfo: String // Added here
         },
-        duoTraining: String,
-        pilates: String
+        duoTraining: {
+          title: String,
+          privateGym: String,
+          customSchedules: String,
+          personalCoach: String,
+          nutritionalGuidance: String,
+          tailoredSessions: String,
+          moreInfo: String // Added here
+        },
+        pilates: {
+          title: String,
+          studioLocation: String,
+          flexibilityBalancePosture: String,
+          certifiedCoach: String,
+          privateOrGroupOptions: String,
+          moreInfo: String // Added here
+        }
       },
       signup: {
         title: String,

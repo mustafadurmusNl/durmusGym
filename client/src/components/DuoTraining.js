@@ -3,20 +3,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/DuoTraining.css';
 
-const DuoTraining = ({ title }) => {
+const DuoTraining = ({ translations = {} }) => {
+  const title = translations?.title?.trim() || "Duo Training"; // Ensure fallback text always appears
   return (
     <div className="option-card">
-      <h3>{title || "Duo Training"}</h3>
-      <p>2-on-1</p>
-      <Link to="/free-trial" className="btn-more-info">More Information</Link>
+      <h3>{title}</h3>
       <div className="description">
         <ul>
-          <li>✓ Duo training in the private gym in Bergen op Zoom</li>
-          <li>✓ Custom made schedules</li>
-          <li>✓ Your personal coach</li>
-          <li>✓ Personalized Nutritional Guidance</li>
-          <li>✓ Number of sessions tailored to you and for you</li>
+          <li>✓ {translations?.privateGym?.trim() || "Duo training in the private gym in Bergen op Zoom"}</li>
+          <li>✓ {translations?.customSchedules?.trim() || "Custom made schedules"}</li>
+          <li>✓ {translations?.personalCoach?.trim() || "Your personal coach"}</li>
+          <li>✓ {translations?.nutritionalGuidance?.trim() || "Personalized Nutritional Guidance"}</li>
+          <li>✓ {translations?.tailoredSessions?.trim() || "Number of sessions tailored to you and for you"}</li>
         </ul>
+        <Link to="/free-trial" className="btn-more-info">
+        {translations?.moreInfo?.trim() || "More Information"}
+      </Link>
       </div>
     </div>
   );
