@@ -4,6 +4,7 @@ const path = require('path');  // Import path to serve static files
 
 const mediaRoutes = require('./routes/mediaRoutes');
 const languageRoutes = require("./routes/languageRoutes"); // ✅ Import languageRoutes
+const messageRoutes = require("./routes/messageRoutes");
 const app = express();
 
 // Middleware
@@ -18,6 +19,9 @@ app.use(express.json());
 // Routes
 app.use('/api', mediaRoutes);
 app.use("/api/languages", languageRoutes); // ✅ Add this route
+// Routes
+app.use("/api/messages", messageRoutes);
+
 // Serve static files from the React app (for production)
 if (process.env.NODE_ENV === 'production') {
   // Serve static files from the React build folder
