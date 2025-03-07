@@ -4,6 +4,7 @@ import "../styles/Contact.css";
 
 const Contact = () => {
   const { translations, isLoading } = useTranslation("contactPage");
+  const BASE_URL = process.env.REACT_APP_BASE_SERVER_URL;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -30,7 +31,7 @@ const Contact = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch("http://localhost:5000/api/messages/contact", {
+      const response = await fetch(`${BASE_URL}/api/messages/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
