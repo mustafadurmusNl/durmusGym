@@ -8,7 +8,7 @@ const PersonalApproach = ({ image, translations }) => {
       <div style={{ flex: 1, padding: "20px" }}>
         <h2>{translations?.title || "Train at your level."}</h2>
         <p>{translations?.description || "At DurmusGym we believe in a personal approach..."}</p>
-        <Link to="/methods" className="btn btn-secondary">
+        <Link to="/method" className="btn btn-secondary">
           {translations?.button || "Discover Working Method"}
         </Link>
       </div>
