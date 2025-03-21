@@ -1,0 +1,90 @@
+/* Ensure full-page styling */
+body, html {
+  background-color: #333; /* Gray background */
+  color: white;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Main container */
+.method-container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Title Styling */
+.method-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #f4f4f4;
+}
+
+/* Steps Section - 4 columns */
+.method-steps {
+  display: flex;
+  justify-content: space-between; /* Even spacing */
+  flex-wrap: wrap; /* Ensure responsiveness */
+  gap: 20px; /* Space between boxes */
+}
+
+/* Individual Step Box */
+.method-step {
+  background: rgba(246, 246, 248, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  flex: 1; /* Equal width distribution */
+  min-width: 250px; /* Prevents shrinking too much */
+  max-width: 320px; /* Controls max width */
+  text-align: center;
+}
+
+.method-step h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.method-step p {
+  font-size: 16px;
+  color: #ddd;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+/* Step Images */
+.method-step img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .method-steps {
+    justify-content: center; /* Center align items */
+    gap: 15px;
+  }
+
+  .method-step {
+    flex: 0 1 calc(33.333% - 15px); /* 3 columns on medium screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .method-step {
+    flex: 0 1 calc(50% - 15px); /* 2 columns on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .method-step {
+    flex: 0 1 100%; /* 1 column on small screens */
+  }
+}

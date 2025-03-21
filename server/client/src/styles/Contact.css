@@ -1,0 +1,121 @@
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.about-left,
+.about-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-left {
+  max-width: 500px;
+}
+
+.about-left h2 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.about-left p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: white;
+}
+
+.about-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: none;
+}
+
+.send-button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.send-button:hover {
+  background-color: #219150;
+}
+
+.about-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.about-contact-row {
+  display: flex;
+  flex-direction: row;  /* Make them align horizontally */
+  justify-content: space-between; /* Distribute space evenly */
+  width: 100%;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.whatsapp-section,
+.contact-info {
+  text-align: center;
+  flex: 1;  /* Equal width for both sections */
+}
+
+.whatsapp-button {
+  background-color: #25d366;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.whatsapp-button i {
+  margin-right: 8px;
+}
+
+.whatsapp-button:hover {
+  background-color: #20c157;
+}
+
+.contact-info p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: white;
+}

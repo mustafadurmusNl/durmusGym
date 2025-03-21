@@ -1,0 +1,96 @@
+.option-card {
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  max-width: 350px;
+  margin: 10px auto;
+}
+
+.option-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.option-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.option-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  text-align: left;
+}
+
+.option-card li {
+  font-size: 1rem;
+  padding: 8px 0;
+  padding-left: 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+/* ✅ Add checkmark before each item */
+.option-card li::before {
+  content: "✔";
+  color: #00ff99;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+
+.option-card li:last-child {
+  border-bottom: none;
+}
+
+.btn-more-info {
+  display: inline-block;
+  background: white;
+  color: #ff4f79;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 12px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-more-info:hover {
+  background: #ff4f79;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .option-card {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .option-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .option-card li {
+    font-size: 0.95rem;
+    padding-left: 26px;
+  }
+
+  .option-card li::before {
+    font-size: 1rem;
+    left: 3px;
+  }
+
+  .btn-more-info {
+    padding: 8px 14px;
+  }
+}
