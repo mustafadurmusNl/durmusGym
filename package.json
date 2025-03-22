@@ -10,7 +10,8 @@
     "build": "npm run build --prefix client"
   },
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "typescript": "^4.9.5"
   },
   "keywords": [],
   "author": "",
@@ -28,8 +29,7 @@
     "react-scripts": "^5.0.1"
   },
   "engines": {
-  "node": "20.x",
-  "npm": "10.x"
-}
-  
+    "node": "20.x",
+    "npm": "10.x"
+  }
 }
