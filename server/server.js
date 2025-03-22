@@ -3,7 +3,7 @@ require('dotenv').config({ path: './server/.env' }); // Load environment variabl
 const app = require('./app'); // Import the Express app
 const mongoose = require('mongoose'); // Ensure MongoDB connection is established
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // MongoDB Connection
 mongoose
