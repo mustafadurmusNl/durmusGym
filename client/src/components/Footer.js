@@ -5,7 +5,7 @@ import "../styles/Footer.css";
 
 const Footer = () => {
   const { t } = useTranslation();
-
+  
   return (
     <footer className="footer-container">
       <div className="footer-content footer-centered">
@@ -20,10 +20,10 @@ const Footer = () => {
         <div className="footer-section">
           <h3>{t("footer.socials")}</h3>
           <div className="footer-icons">
-            <a href="https://www.instagram.com/mdurmusnl1" className="social-icon instagram">
+            <a href="https://www.instagram.com/mustafaboz2357" className="social-icon instagram" target="_blank" rel="noopener noreferrer">
               <FaInstagram />
             </a>
-            <a href="#" className="social-icon whatsapp">
+            <a href="https://wa.me/31633820475" className="social-icon whatsapp" target="_blank" rel="noopener noreferrer">
               <FaWhatsapp />
             </a>
           </div>

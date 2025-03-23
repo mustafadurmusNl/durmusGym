@@ -1,35 +1,35 @@
 import React, { createContext, useState, useEffect } from "react";
-import i18n from "../i18n"; // Import i18n to sync it
-import { fetchLanguage } from "../services/languageService"; // Import language fetch function
+import i18n from "../i18n";
+import { fetchLanguage } from "../services/languageService";
 
 const LanguageContext = createContext();
 
 const LanguageProvider = ({ children }) => {
   const [selectedLang, setSelectedLang] = useState("en"); // Default language
-  const [translations, setTranslations] = useState({}); // Store fetched translations
+  const [translations, setTranslations] = useState({});
 
-  // Retrieve saved language from localStorage
+  // Retrieve saved language from localStorage on first load
   useEffect(() => {
-
-     // Sync i18n.js language with context
-     i18n.changeLanguage(selectedLang);
     const savedLang = localStorage.getItem("selectedLang") || "en";
     setSelectedLang(savedLang);
-    loadTranslations(savedLang);
   }, []);
 
-  // Fetch translations when language changes
-  const loadTranslations = async (langCode) => {
-    const fetchedTranslations = await fetchLanguage(langCode);
-    setTranslations(fetchedTranslations);
-  };
+  // Fetch translations when selectedLang changes
+  useEffect(() => {
+    i18n.changeLanguage(selectedLang); // Sync i18n.js language with context
+    const loadTranslations = async () => {
+      const fetchedTranslations = await fetchLanguage(selectedLang);
+      setTranslations(fetchedTranslations);
+    };
+    loadTranslations();
+  }, [selectedLang]); // Now selectedLang is properly used
 
   // Change language function
   const changeLanguage = (lang) => {
-    setSelectedLang(lang);
-    localStorage.setItem("selectedLang", lang);
-    loadTranslations(lang); // Fetch new translations
-    i18n.changeLanguage(lang); // Update i18n.js language
+    if (lang !== selectedLang) {
+      setSelectedLang(lang);
+      localStorage.setItem("selectedLang", lang);
+    }
   };
 
   return (
