@@ -28,7 +28,7 @@ const HomePage = () => {
     <div>
       {images.length > 0 && (
         <>
-          <IntroSection image={images[2]?.src?.large} translations={translations?.intro} />
+          <IntroSection image={images[11]?.src?.large} translations={translations?.intro} />
           <PersonalApproach image={images[19]?.src?.large} translations={translations?.personalApproach} />
         </>
       )}
