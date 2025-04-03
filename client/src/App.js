@@ -3,31 +3,40 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { LanguageProvider } from "./context/languageContext"; // Import the LanguageProvider
 import NavBar from "./components/Navbar";
+import Footer from "./components/Footer";
+import "./i18n"; 
+
+// Importing pages dynamically
 import HomePage from "./pages/HomePage";
-import PersonalTraining from "./components/PersonalTraining"; 
-import Diet from "./components/Diet"; 
+import PersonalTraining from "./components/PersonalTraining";
+import Diet from "./components/Diet";
 import Contact from "./components/Contact";
 import Pilates from "./components/Pilates";
 import Method from "./components/Method";
 import About from "./components/About";
-import Footer from "./components/Footer";
 import Yoga from "./components/Yoga";
-import "./i18n"; 
+
+const routes = [
+  { path: "/", element: <HomePage /> },
+  { path: "/personal-training", element: <PersonalTraining /> },
+  { path: "/pilates", element: <Pilates /> },
+  { path: "/diet", element: <Diet /> },
+  { path: "/contact", element: <Contact /> },
+  { path: "/method", element: <Method /> },
+  { path: "/about", element: <About /> },
+  { path: "/free-trial", element: <Contact /> }, // Reused Contact component
+  { path: "/yoga", element: <Yoga /> },
+];
+
 const App = () => {
   return (
-    <LanguageProvider> {/* Wrap your app with LanguageProvider */}
+    <LanguageProvider>
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/personal-training" element={<PersonalTraining />} />
-          <Route path="/pilates" element={<Pilates />} /> 
-          <Route path="/diet" element={<Diet />} /> 
-          <Route path="/contact" element={<Contact />} /> 
-          <Route path="/method" element={<Method />} /> 
-          <Route path="/about" element={<About />} />
-          <Route path="/free-trial" element={<Contact />} />
-          <Route path="/yoga" element={<Yoga />} />
+          {routes.map(({ path, element }, index) => (
+            <Route key={index} path={path} element={element} />
+          ))}
         </Routes>
         <Footer />
       </Router>
