@@ -29,7 +29,7 @@ const HomePage = () => {
       {images.length > 0 && (
         <>
           <IntroSection image={images[51]?.src?.large} translations={translations?.intro} />
-          <PersonalApproach image={images[19]?.src?.large} translations={translations?.personalApproach} />
+          <PersonalApproach image={images[39]?.src?.large} translations={translations?.personalApproach} />
         </>
       )}
       <OptionsSection translations={translations?.options} />

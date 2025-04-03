@@ -14,7 +14,7 @@ const Yoga = () => {
       try {
         const images = await fetchImages();
         if (images.length > 0) {
-          setImage(images[11]?.src?.large); // Change index if needed
+          setImage(images[44]?.src?.large); // Change index if needed
         }
       } catch (error) {
         console.error("Error fetching image:", error);

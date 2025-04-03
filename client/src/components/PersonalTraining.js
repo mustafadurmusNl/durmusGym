@@ -53,7 +53,7 @@ const PersonalTraining = () => {
           ) : (
             images.length > 0 && (
               <img
-                src={images[8]?.src?.large} // Display the first image
+                src={images[48]?.src?.large} // Display the first image
                 alt="Personal Training"
                 className="hero-image"
               />
