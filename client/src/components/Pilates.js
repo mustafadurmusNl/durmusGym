@@ -41,7 +41,7 @@ const Pilates = () => {
             ) : (
               images.length > 0 && (
                 <img
-                  src={images[5]?.src?.large}
+                  src={images[75]?.src?.large}
                   alt="Pilates at KoepelGym"
                   className="hero-image"
                 />

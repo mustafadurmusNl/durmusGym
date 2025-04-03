@@ -51,7 +51,7 @@ const Diet = () => {
           ) : (
             images.length > 0 && (
               <img
-                src={images[9]?.src?.large} // Display an appropriate image
+                src={images[61]?.src?.large} // Display an appropriate image
                 alt="Healthy Diet"
                 className="hero-image"
               />
