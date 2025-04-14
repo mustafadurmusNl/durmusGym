@@ -23,24 +23,56 @@ const fetchAndStoreImages = async () => {
     // Store new images in MongoDB
     await Image.insertMany(images);
     console.log("Images saved to database!");
-
   } catch (error) {
     console.error("Error fetching and storing images:", error);
   }
 };
 
-// API Endpoint to Get Images from DB
+// API Endpoint to Get Filtered Images from DB
 const getImages = async (req, res) => {
   try {
-    const images = await Image.find();
-    if (images.length === 0) {
-      return res.status(404).json({ message: "No images found! Run fetch process." });
+    const { category } = req.query;
+
+    if (!category) {
+      return res.status(400).json({ error: "Category is required" });
     }
-    res.json(images);
+
+    const keywordMap = {
+      pilates: ["pilates", "stretch", "balance", "mat", "core"],
+      yoga: ["yoga", "pose", "zen", "stretch", "balance"],
+      personal: ["personal", "trainer", "coach", "custom", "private"],
+      intro: ["intro", "gym", "welcome", "workout", "start"],
+      diet: ["diet", "nutrition", "healthy", "food", "meal", "plan", "protein", "vegetable"],
+      personal: ["personal", "trainer", "coach", "training", "session", "private", "fit", "custom"],
+      method: ["method", "plan", "process", "strategy", "step", "approach", "workflow"],
+
+
+      // Add more mappings as needed
+    };
+
+    const keywords = keywordMap[category.toLowerCase()] || [category.toLowerCase()];
+    const allImages = await Image.find({});
+
+    // Try to match by alt text
+    const matchingImages = allImages.filter((img) =>
+      keywords.some((kw) => img?.alt?.toLowerCase().includes(kw))
+    );
+
+    const chosenImage =
+      matchingImages.length > 0
+        ? matchingImages[Math.floor(Math.random() * matchingImages.length)]
+        : allImages[Math.floor(Math.random() * allImages.length)];
+
+    return res.json(chosenImage);
   } catch (error) {
-    console.error("Error fetching images from DB:", error);
-    res.status(500).json({ error: "Failed to retrieve images" });
+    console.error("Error fetching image:", error);
+    return res.status(500).json({ error: "Internal server error" });
   }
 };
 
-module.exports = { getImages, fetchAndStoreImages };
+
+// ✅ Export both functions properly!
+module.exports = {
+  fetchAndStoreImages,
+  getImages,
+};
