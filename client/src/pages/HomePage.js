@@ -8,30 +8,41 @@ import SignupSection from "../components/SignupSection";
 
 const HomePage = () => {
   const { translations, isLoading: isLoadingTranslations } = useTranslation("homePage");
-  const [images, setImages] = useState([]);
-  const [isLoadingImages, setIsLoadingImages] = useState(true);
+  const [introImage, setIntroImage] = useState(null);
+  const [personalApproachImage, setPersonalApproachImage] = useState(null);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    const getImages = async () => {
-      const data = await fetchImages();
-      setImages(data);
-      setIsLoadingImages(false);
+    const loadImages = async () => {
+      try {
+        const [intro] = await fetchImages("intro");
+        const [personal] = await fetchImages("personal");
+
+        setIntroImage(intro);
+        setPersonalApproachImage(personal);
+        setIsReady(true);
+      } catch (error) {
+        console.error("Failed to load homepage images:", error);
+      }
     };
-    getImages();
+
+    loadImages();
   }, []);
 
-  if (isLoadingTranslations || isLoadingImages) {
+  if (isLoadingTranslations || !isReady || !introImage || !personalApproachImage) {
     return <div>Loading...</div>;
   }
 
   return (
     <div>
-      {images.length > 0 && (
-        <>
-          <IntroSection image={images[51]?.src?.large} translations={translations?.intro} />
-          <PersonalApproach image={images[39]?.src?.large} translations={translations?.personalApproach} />
-        </>
-      )}
+      <IntroSection
+        image={introImage?.src?.large}
+        translations={translations?.intro}
+      />
+      <PersonalApproach
+        image={personalApproachImage?.src?.large}
+        translations={translations?.personalApproach}
+      />
       <OptionsSection translations={translations?.options} />
       <SignupSection translations={translations?.signup} />
     </div>

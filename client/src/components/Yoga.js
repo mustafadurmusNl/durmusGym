@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // Import i18n translation hook
+import { useTranslation } from "react-i18next";
 import { fetchImages } from "../services/mediaService";
 
 
 const Yoga = () => {
-  const { t } = useTranslation(); // Use i18n translation
-  const [image, setImage] = useState(null);
+  const { t } = useTranslation();
+  const [yogaImage, setYogaImage] = useState(null);
   const [isImageLoading, setIsImageLoading] = useState(true);
 
   useEffect(() => {
-    const getImage = async () => {
+    const getYogaImage = async () => {
       try {
-        const images = await fetchImages();
-        if (images.length > 0) {
-          setImage(images[44]?.src?.large); // Change index if needed
-        }
+        const [image] = await fetchImages("yoga");
+        setYogaImage(image);
       } catch (error) {
-        console.error("Error fetching image:", error);
+        console.error("Error fetching yoga image:", error);
       } finally {
         setIsImageLoading(false);
       }
     };
 
-    getImage();
+    getYogaImage();
   }, []);
 
   return (
@@ -33,7 +31,13 @@ const Yoga = () => {
           {isImageLoading ? (
             <p>{t("loadingImage")}</p>
           ) : (
-            image && <img src={image} alt="Yoga session" className="hero-image" />
+            yogaImage && (
+              <img
+                src={yogaImage?.src?.large}
+                alt={yogaImage?.alt || "Yoga at KoepelGym"}
+                className="hero-image"
+              />
+            )
           )}
         </div>
         <div className="text-content">
@@ -43,7 +47,9 @@ const Yoga = () => {
           <p>{t("yogaPage.description2")}</p>
           <p>{t("yogaPage.description3")}</p>
           <Link to="/free-trial">
-            <button className="cta-button">{t("yogaPage.freeTrialText")}</button>
+            <button className="cta-button">
+              {t("yogaPage.freeTrialText")}
+            </button>
           </Link>
         </div>
       </div>

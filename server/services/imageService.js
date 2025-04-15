@@ -16,27 +16,33 @@ const fetchAndStoreImages = async () => {
       return;
     }
 
-    const response = await axios.get(PEXELS_API_URL, {
-      headers: { Authorization: PEXELS_API_KEY },
-      params: {
-        query: QUERY,
-        per_page: PER_PAGE,
-        page: PAGE,
-      },
-    });
+    const queries = ["gym", "pilates", "boxing", "yoga"]; // Add more as needed
+    await Image.deleteMany({}); // Clear old data
 
-    const images = response.data.photos;
+    for (const query of queries) {
+      const response = await axios.get(PEXELS_API_URL, {
+        headers: { Authorization: PEXELS_API_KEY },
+        params: {
+          query,
+          per_page: PER_PAGE,
+          page: PAGE,
+        },
+      });
 
-    // Clear old images (optional)
-    await Image.deleteMany({});
+      const images = response.data.photos.map((img) => ({
+        ...img,
+        category: query.toLowerCase(), // Add a category field
+      }));
 
-    // Store new images in MongoDB
-    await Image.insertMany(images);
-    console.log("Images saved to database!");
+      await Image.insertMany(images);
+    }
+
+    console.log("Images saved to DB with categories");
   } catch (error) {
     console.error("Error fetching and storing images:", error);
   }
 };
+
 
 // Fetch images from the database
 const getImagesFromDB = async () => {

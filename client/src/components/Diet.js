@@ -1,58 +1,58 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import useTranslation from "../hooks/useTranslation"; // Custom translation hook
-import { fetchImages } from "../services/mediaService"; // API to fetch images
+import useTranslation from "../hooks/useTranslation";
+import { fetchImages } from "../services/mediaService";
 import "../styles/Diet.css";
 
 const Diet = () => {
-  const { translations, isLoading } = useTranslation("dietPage"); // Fetch translations for this page
-  const [images, setImages] = useState([]);
-  const [isImagesLoading, setIsImagesLoading] = useState(true); // Image loading state
+  const { translations, isLoading } = useTranslation("dietPage");
+  const [dietImage, setDietImage] = useState(null);
+  const [isImageLoading, setIsImageLoading] = useState(true);
 
   useEffect(() => {
-    const getImages = async () => {
+    const getDietImage = async () => {
       try {
-        const data = await fetchImages();
-        setImages(data);
-        setIsImagesLoading(false); // Stop loading once images are fetched
+        const [image] = await fetchImages("diet");
+        setDietImage(image);
       } catch (error) {
-        console.error("Error fetching images:", error);
+        console.error("Error fetching diet image:", error);
+      } finally {
+        setIsImageLoading(false);
       }
     };
 
-    getImages(); // Fetch images once on component mount
+    getDietImage();
   }, []);
 
-  // Show loading state while translations are being fetched
   if (isLoading) {
     return <div>Loading translations...</div>;
   }
 
-  // Show fallback if no translations are found
   if (!translations) {
     return <div>No translations available for Diet page.</div>;
   }
 
   return (
     <div className="diet-container">
-      {/* Hero Section */}
       <div className="hero-section">
         <div className="text-content">
-          <h1>{translations.title || "Loading..."}</h1>
-          <p>{translations.subtitle || "Loading..."}</p>
-          <p>{translations.description || "Loading..."}</p>
+          <h1>{translations.title}</h1>
+          <p>{translations.subtitle}</p>
+          <p>{translations.description}</p>
           <Link to="/free-trial">
-            <button className="cta-button">{translations.freeTrialText || "Loading..."}</button>
+            <button className="cta-button">
+              {translations.freeTrialText}
+            </button>
           </Link>
         </div>
         <div className="image-content">
-          {isImagesLoading ? (
+          {isImageLoading ? (
             <p>Loading image...</p>
           ) : (
-            images.length > 0 && (
+            dietImage && (
               <img
-                src={images[61]?.src?.large} // Display an appropriate image
-                alt="Healthy Diet"
+                src={dietImage?.src?.large}
+                alt={dietImage?.alt || "Healthy Diet"}
                 className="hero-image"
               />
             )
@@ -60,33 +60,51 @@ const Diet = () => {
         </div>
       </div>
 
-      {/* Diet Details Section */}
       <div className="details-section">
-        <h2>{translations.formTitle || "Get Your Personalized Diet Plan"}</h2>
-        <p>{translations.description2 || "Fuel your body with balanced nutrition, fasting, and proper sleep to complement your workouts."}</p>
-        <p>{translations.description3 || "Achieve your fitness goals with our tailored diet plans and expert guidance."}</p>
-        <p>{translations.description4 || "Start today and transform your eating habits for a healthier lifestyle."}</p>
+        <h2>{translations.formTitle}</h2>
+        <p>{translations.description2}</p>
+        <p>{translations.description3}</p>
+        <p>{translations.description4}</p>
 
-        {/* Diet Plan Form */}
         <form className="diet-form">
           <div className="form-group">
-            <label htmlFor="name">{translations.name || "Name"}</label>
-            <input type="text" id="name" name="name" placeholder={translations.placeholderName || "Your Name"} />
+            <label htmlFor="name">{translations.name}</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder={translations.placeholderName}
+            />
           </div>
           <div className="form-group">
-            <label htmlFor="email">{translations.email || "Email Address"}</label>
-            <input type="email" id="email" name="email" placeholder={translations.placeholderEmail || "Your Email Address"} />
+            <label htmlFor="email">{translations.email}</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder={translations.placeholderEmail}
+            />
           </div>
           <div className="form-group">
-            <label htmlFor="phone">{translations.phone || "Phone Number"}</label>
-            <input type="tel" id="phone" name="phone" placeholder={translations.placeholderPhone || "Your Phone Number"} />
+            <label htmlFor="phone">{translations.phone}</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder={translations.placeholderPhone}
+            />
           </div>
           <div className="form-group">
-            <label htmlFor="comments">{translations.comments || "Comments"}</label>
-            <textarea id="comments" name="comments" rows="4" placeholder={translations.placeholderComments || "Your dietary preferences, goals, etc."}></textarea>
+            <label htmlFor="comments">{translations.comments}</label>
+            <textarea
+              id="comments"
+              name="comments"
+              rows="4"
+              placeholder={translations.placeholderComments}
+            ></textarea>
           </div>
           <button type="submit" className="send-button">
-            {translations.sendButton || "Send"}
+            {translations.sendButton}
           </button>
         </form>
       </div>
