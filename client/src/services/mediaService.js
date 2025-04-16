@@ -1,30 +1,33 @@
-// src/services/mediaService.js
 import axios from "axios";
 
-const BASE_URL = process.env.REACT_APP_BASE_SERVER_URL;
+const BASE_URL = "http://localhost:5000";  // Update with your server URL if needed
 
-// services/mediaService.js
-export const fetchImages = async (category) => {
+export const fetchImages = async (category, limit) => {
+  const validCategories = [
+    "pilates",
+    "yoga",
+    "personal",
+    "intro",
+    "diet",
+    "method",
+    "assessment",
+    "customplan",
+    "training",
+    "progresstracking"
+  ];
+
+  if (!validCategories.includes(category.toLowerCase())) {
+    throw new Error("Invalid category");
+  }
+
   try {
     const response = await axios.get(`${BASE_URL}/api/images`, {
-      params: { category },
+      params: { category, limit },
     });
 
     return response.data ? [response.data] : [];
   } catch (error) {
     console.error("Error fetching images:", error);
-    return [];
-  }
-};
-
-
-
-export const fetchVideos = async () => {
-  try {
-    const response = await axios.get(`${BASE_URL}/api/videos`);
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching videos:", error);
     return [];
   }
 };
