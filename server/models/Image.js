@@ -21,6 +21,7 @@ const ImageSchema = new mongoose.Schema({
     tiny: String,
   },
   url: String,
+  category: String, // 👈 Add this line
 }, { timestamps: true });
 
 module.exports = mongoose.model("Image", ImageSchema);
