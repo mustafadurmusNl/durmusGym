@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useTranslation from "../hooks/useTranslation";
 import "../styles/Contact.css";
+import { clearMessageAfterDelay } from "../util/helpers";
 
 const Contact = () => {
   const { translations, isLoading } = useTranslation("contactPage");
@@ -30,6 +31,21 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const emailRegex = /\S+@\S+\.\S+/;
+    const phoneRegex = /^\+?\d{7,15}$/;
+
+    if (!emailRegex.test(formData.email)) {
+      setResponseMessage("Invalid email format.");
+      clearMessageAfterDelay(setResponseMessage);
+      return;
+    }
+
+    if (!phoneRegex.test(formData.phone)) {
+      setResponseMessage("Invalid phone number.");
+      clearMessageAfterDelay(setResponseMessage);
+      return;
+    }
+
     try {
       const response = await fetch(`${BASE_URL}/api/messages/contact`, {
         method: "POST",
@@ -50,6 +66,8 @@ const Contact = () => {
       console.error("Error sending message:", error);
       setResponseMessage("Server error. Please try again later.");
     }
+
+    clearMessageAfterDelay(setResponseMessage);
   };
 
   return (
@@ -57,27 +75,60 @@ const Contact = () => {
       {/* Left Section - Contact Form */}
       <div className="about-left">
         <h2>{translations.title || "Schedule your free trial lesson"}</h2>
-        <p>{translations.subtitle || "After completing the form below, we will contact you."}</p>
+        <p>
+          {translations.subtitle ||
+            "After completing the form below, we will contact you."}
+        </p>
 
         <form className="about-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">{translations.name || "Name"}</label>
-            <input type="text" id="name" value={formData.name} onChange={handleChange} required />
+            <input
+              type="text"
+              id="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">{translations.email || "Email Address"}</label>
-            <input type="email" id="email" value={formData.email} onChange={handleChange} required />
+            <label htmlFor="email">
+              {translations.email || "Email Address"}
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <div className="form-group">
-            <label htmlFor="phone">{translations.phone || "Phone Number"}</label>
-            <input type="tel" id="phone" value={formData.phone} onChange={handleChange} required />
+            <label htmlFor="phone">
+              {translations.phone || "Phone Number"}
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              pattern="^\+?\d{7,15}$"
+              required
+              title="Enter a valid phone number (e.g. +31612345678)"
+              value={formData.phone}
+              onChange={handleChange}
+            />
           </div>
 
           <div className="form-group">
             <label htmlFor="message">{translations.message || "Message"}</label>
-            <textarea id="message" rows="4" value={formData.message} onChange={handleChange} required></textarea>
+            <textarea
+              id="message"
+              rows="4"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            ></textarea>
           </div>
 
           <button type="submit" className="send-button">
@@ -85,7 +136,9 @@ const Contact = () => {
           </button>
         </form>
 
-        {responseMessage && <p className="response-message">{responseMessage}</p>}
+        {responseMessage && (
+          <p className="response-message">{responseMessage}</p>
+        )}
       </div>
 
       {/* Right Section - Google Map */}
