@@ -16,31 +16,37 @@ const SignupSection = ({ translations }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const emailRegex = /\S+@\S+\.\S+/;
     const phoneRegex = /^\+?\d{7,15}$/;
-
+  
     if (!emailRegex.test(formData.email)) {
       setResponseMessage("Invalid email format.");
       return clearMessageAfterDelay(setResponseMessage);
     }
-
+  
     if (!phoneRegex.test(formData.phone)) {
       setResponseMessage("Invalid phone number.");
       return clearMessageAfterDelay(setResponseMessage);
     }
-
-    const { success, data } = await postData(`${BASE_URL}/api/messages/signup`, formData);
-
-    if (success) {
-      setResponseMessage(data.message);
-      setFormData({ name: "", email: "", phone: "", message: "" });
-    } else {
-      setResponseMessage(data.error || "Something went wrong.");
+  
+    try {
+      const { success, data } = await postData(`${BASE_URL}/api/messages/signup`, formData);
+  
+      if (success) {
+        setResponseMessage(data.message);
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        setResponseMessage(data.error || "Something went wrong.");
+      }
+    } catch (error) {
+      console.error("API error:", error);
+      setResponseMessage("Server error. Please try again later.");
     }
-
+  
     clearMessageAfterDelay(setResponseMessage);
   };
+  
 
   const handleWhatsAppClick = () => {
     const whatsappNumber = WHATSAPP_NUMBER || "31633820475";
