@@ -27,23 +27,27 @@ const getImages = async (req, res) => {
       "progresstracking"
     ];
 
-    if (!validCategories.includes(category.toLowerCase())) {
+    const lowerCategory = category.toLowerCase();
+    if (!validCategories.includes(lowerCategory)) {
       return res.status(400).json({ error: "Invalid category" });
     }
 
-    const images = await Image.find({ category: category.toLowerCase() });
+    const [randomImage] = await Image.aggregate([
+      { $match: { category: lowerCategory } },
+      { $sample: { size: 1 } }
+    ]);
 
-    if (!images.length) {
+    if (!randomImage) {
       return res.status(404).json({ error: "No images found for this category" });
     }
 
-    const randomImage = images[Math.floor(Math.random() * images.length)];
     return res.json(randomImage);
   } catch (error) {
     console.error("Error fetching image:", error);
     return res.status(500).json({ error: "Internal server error" });
   }
 };
+
 
 module.exports = {
   getImages,
