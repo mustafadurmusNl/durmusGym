@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useTranslation from "../hooks/useTranslation";
 import { fetchImages } from "../services/mediaService";
+import { CATEGORIES } from "../constants/categories";
 import "../styles/Pilates.css";
 
 const Pilates = () => {
@@ -12,7 +13,7 @@ const Pilates = () => {
   useEffect(() => {
     const getPilatesImage = async () => {
       try {
-        const [image] = await fetchImages("pilates");
+        const [image] = await fetchImages(CATEGORIES.PILATES);
         setPilatesImage(image);
       } catch (error) {
         console.error("Error fetching pilates image:", error);

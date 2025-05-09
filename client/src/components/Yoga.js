@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import useTranslation from "../hooks/useTranslation";
 import { fetchImages } from "../services/mediaService";
+import { CATEGORIES } from "../constants/categories";
 
 
 const Yoga = () => {
-  const { t } = useTranslation();
+  const { translations, isLoading } = useTranslation("yogaPage");
   const [yogaImage, setYogaImage] = useState(null);
   const [isImageLoading, setIsImageLoading] = useState(true);
 
   useEffect(() => {
     const getYogaImage = async () => {
       try {
-        const [image] = await fetchImages("yoga");
+        const [image] = await fetchImages(CATEGORIES.YOGA); // category via constant
         setYogaImage(image);
       } catch (error) {
         console.error("Error fetching yoga image:", error);
@@ -24,12 +25,15 @@ const Yoga = () => {
     getYogaImage();
   }, []);
 
+  if (isLoading) return <div>Loading translations...</div>;
+  if (!translations) return <div>No translations available for Yoga page.</div>;
+
   return (
     <div className="yoga-container">
       <div className="hero-section">
         <div className="image-content">
           {isImageLoading ? (
-            <p>{t("loadingImage")}</p>
+            <p>Loading image...</p>
           ) : (
             yogaImage && (
               <img
@@ -41,14 +45,14 @@ const Yoga = () => {
           )}
         </div>
         <div className="text-content">
-          <h1>{t("yogaPage.title")}</h1>
-          <h2>{t("yogaPage.subtitle")}</h2>
-          <p>{t("yogaPage.description")}</p>
-          <p>{t("yogaPage.description2")}</p>
-          <p>{t("yogaPage.description3")}</p>
+          <h1>{translations.title}</h1>
+          <h2>{translations.subtitle}</h2>
+          <p>{translations.description}</p>
+          <p>{translations.description2}</p>
+          <p>{translations.description3}</p>
           <Link to="/free-trial">
             <button className="cta-button">
-              {t("yogaPage.freeTrialText")}
+              {translations.freeTrialText || "Free Trial Lesson"}
             </button>
           </Link>
         </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useTranslation from "../hooks/useTranslation";
 import { fetchImages } from "../services/mediaService";
+import { CATEGORIES } from "../constants/categories"; // Import categories
 import "../styles/Diet.css";
 
 const Diet = () => {
@@ -12,7 +13,7 @@ const Diet = () => {
   useEffect(() => {
     const getDietImage = async () => {
       try {
-        const [image] = await fetchImages("diet");
+        const [image] = await fetchImages(CATEGORIES.DIET); // Use constant
         setDietImage(image);
       } catch (error) {
         console.error("Error fetching diet image:", error);
@@ -24,13 +25,8 @@ const Diet = () => {
     getDietImage();
   }, []);
 
-  if (isLoading) {
-    return <div>Loading translations...</div>;
-  }
-
-  if (!translations) {
-    return <div>No translations available for Diet page.</div>;
-  }
+  if (isLoading) return <div>Loading translations...</div>;
+  if (!translations) return <div>No translations available for Diet page.</div>;
 
   return (
     <div className="diet-container">

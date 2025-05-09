@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useTranslation from "../hooks/useTranslation"; 
 import { fetchImages } from "../services/mediaService"; 
+import { CATEGORIES } from "../constants/categories"; // ✅ Use constants
 import "../styles/Method.css"; 
 
 const Method = () => {
@@ -11,12 +12,16 @@ const Method = () => {
   useEffect(() => {
     const loadImages = async () => {
       try {
-        
         const fetchedImages = await Promise.all(
-          ["assessment", "customPlan", "training", "progressTracking"].map(async (category) => {
+          [
+            CATEGORIES.ASSESSMENT,
+            CATEGORIES.CUSTOM_PLAN,
+            CATEGORIES.TRAINING,
+            CATEGORIES.PROGRESS_TRACKING
+          ].map(async (category) => {
             const image = await fetchImages(category, 1); 
-            return image?.[0]?.src?.large; // optional chaining to handle cases where image might not exist
-          })   //Optional chaining allows you to safely access deeply nested properties of an object without having to explicitly check if each property exists.
+            return image?.[0]?.src?.large;
+          })
         );
         setImages(fetchedImages); 
       } catch (error) {
@@ -29,13 +34,8 @@ const Method = () => {
     loadImages(); 
   }, []);
 
-  if (isLoading) {
-    return <div>Loading translations...</div>;
-  }
-
-  if (!translations || !translations.steps) {
-    return <div>No translations available for this page.</div>;
-  }
+  if (isLoading) return <div>Loading translations...</div>;
+  if (!translations || !translations.steps) return <div>No translations available for this page.</div>;
 
   return (
     <div className="method-container">
