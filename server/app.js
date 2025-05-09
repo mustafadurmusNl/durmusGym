@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const { fetchAndStoreImages,getImagesFromDB, isImageDataReady } = require("./services/imageService"); // Importing the updated image service
+const { fetchAndStoreImages, getImagesFromDB, isImageDataReady } = require("./services/imageService");
 
 const mediaRoutes = require("./routes/mediaRoutes");
 const languageRoutes = require("./routes/languageRoutes");
@@ -22,6 +22,14 @@ app.use(express.json());
 app.use("/api", mediaRoutes);
 app.use("/api/languages", languageRoutes);
 app.use("/api/messages", messageRoutes);
+
+// Serve the static files from React's build folder
+app.use(express.static(path.join(__dirname, '../../../client/build')));
+
+// Always return the main index.html for any other routes (client-side routing)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, '../../../client/build', 'index.html'));
+});
 
 // ✅ Dev/debug endpoint: Returns all images from the database
 app.get("/api/images/all", async (req, res) => {
