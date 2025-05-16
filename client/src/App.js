@@ -6,7 +6,7 @@ import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./i18n";
 import routes from "./routes/routes"; // Import the routes array
-import NotFound from "./components/NotFound";
+import NotFound from "./components/notFound";
 const App = () => {
   return (
     <LanguageProvider>
