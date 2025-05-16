@@ -6,7 +6,7 @@ import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./i18n";
 import routes from "./routes/routes"; // Import the routes array
-
+import NotFound from "./components/NotFound";
 const App = () => {
   return (
     <LanguageProvider>
@@ -16,6 +16,7 @@ const App = () => {
           {routes.map(({ path, element }, index) => (
             <Route key={index} path={path} element={element} />
           ))}
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </Router>
