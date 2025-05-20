@@ -1,0 +1,32 @@
+.home-container {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+}
+
+.section {
+  min-height: 100vh;
+  padding: 60px 0;
+  transition: background-color 0.5s ease-in-out;
+}
+
+/* Section spacing */
+.section + .section {
+  margin-top: 30px;
+}
+
+/* Unique background colors */
+.section-intro {
+  background-color: #1e2a38;
+}
+.section-personal {
+  background-color: #2a3d4f;
+}
+.section-options {
+  background-color: #34495e;
+}
+.section-signup {
+  background-color: #3b5998;
+}
+.section-trial {
+  background-color: #1abc9c;
+}

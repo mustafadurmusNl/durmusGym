@@ -5,9 +5,12 @@ import IntroSection from "../components/IntroSection";
 import PersonalApproach from "../components/PersonalApproach";
 import OptionsSection from "../components/OptionsSection";
 import SignupSection from "../components/SignupSection";
-import FreeTrialSection from "../components/FreeTrialSection"; // Import the new Free Trial Section
+import FreeTrialSection from "../components/FreeTrialSection";
+import "../styles/HomePage.css"; // Make sure this is imported
+
 const HomePage = () => {
-  const { translations, isLoading: isLoadingTranslations } = useTranslation("homePage");
+  const { translations, isLoading: isLoadingTranslations } =
+    useTranslation("homePage");
   const [introImage, setIntroImage] = useState(null);
   const [personalApproachImage, setPersonalApproachImage] = useState(null);
   const [isReady, setIsReady] = useState(false);
@@ -29,24 +32,42 @@ const HomePage = () => {
     loadImages();
   }, []);
 
-  if (isLoadingTranslations || !isReady || !introImage || !personalApproachImage) {
+  if (
+    isLoadingTranslations ||
+    !isReady ||
+    !introImage ||
+    !personalApproachImage
+  ) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
-      <IntroSection
-        image={introImage?.src?.large}
-        translations={translations?.intro}
-      />
-      <PersonalApproach
-        image={personalApproachImage?.src?.large}
-        translations={translations?.personalApproach}
-      />
-      <OptionsSection translations={translations?.options} />
-      <SignupSection translations={translations?.signup} />
-       {/* New Free Trial Scroll Section */}
-    <FreeTrialSection />
+    <div className="home-container">
+      <section className="section section-intro">
+        <IntroSection
+          image={introImage?.src?.original}
+          translations={translations?.intro}
+        />
+      </section>
+
+      <section className="section section-personal">
+        <PersonalApproach
+          image={personalApproachImage?.src?.original}
+          translations={translations?.personalApproach}
+        />
+      </section>
+
+      <section className="section section-options">
+        <OptionsSection translations={translations?.options} />
+      </section>
+
+      <section className="section section-signup">
+        <SignupSection translations={translations?.signup} />
+      </section>
+
+      <section className="section section-trial">
+        <FreeTrialSection />
+      </section>
     </div>
   );
 };
