@@ -36,7 +36,7 @@ const PersonalTraining = () => {
           <h1>{translations.title}</h1>
           <p>{translations.subtitle}</p>
           <p>{translations.description}</p>
-          <Link to="/free-trial">
+          <Link to="/free-trial-page">
             <button className="cta-button">
               {translations.freeTrialText}
             </button>

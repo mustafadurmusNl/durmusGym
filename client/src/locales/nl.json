@@ -2,9 +2,9 @@
   "yogaPage": {
     "title": "Ervaar de voordelen van yoga",
     "subtitle": "Versterk je lichaam, ontspan je geest",
-    "description": "Doe mee met onze deskundige yoga-sessies en verbeter je flexibiliteit, balans en innerlijke rust.",
-    "description2": "Perfect voor alle niveaus, van beginners tot gevorderden.",
-    "description3": "Verminder stress, vergroot mindfulness en bouw kracht op met onze begeleide lessen.",
+    "description": "Doe mee aan onze yoga sessies onder begeleiding van experts en verbeter je flexibiliteit, balans en innerlijke rust.",
+    "description2": "Geschikt voor alle niveaus, van beginners tot gevorderden.",
+    "description3": "Verminder stress, vergroot je mindfulness en bouw kracht op met onze begeleide lessen.",
     "freeTrialText": "Probeer een gratis les"
   },
   "footer": {
@@ -16,17 +16,108 @@
     "email": "info@durmusgym.nl",
     "phone": "+31 6 33820475",
     "gymName": "DurmusGym",
-    "chamberOfCommerce": "Kamer van Koophandel Nummer: 1111111"
+    "chamberOfCommerce": "KvK-nummer: 1111111"
   },
   "navbar": {
-    "personalTraining": "Persoonlijke Training",
+    "personalTraining": "Personal Training",
     "pilates": "Pilates",
     "diet": "Dieet",
-    "about": "Over",
+    "about": "Over ons",
     "method": "Methode",
     "contact": "Contact",
-    "freeTrial": "Gratis Proefles",
-    "yoga": "Yoga"
+    "freeTrial": "Gratis proefles",
+    "yoga": "Yoga",
+    "login": "Inloggen"
   },
-  "loadingImage": "Afbeelding laden..."
+  "login": {
+    "welcome": "Welkom! Log in om door te gaan.",
+    "newHere": "Nieuw bij DurmusGym?",
+    "freeTrialLink": "Probeer het nu vier dagen gratis!",
+    "email": "E-mailadres",
+    "password": "Wachtwoord",
+    "remember": "Onthoud mij",
+    "forgot": "Wachtwoord vergeten?",
+    "signin": "Inloggen"
+  },
+  "freeTrial": {
+    "title": "Begin nu je gratis proefperiode",
+    "option12": "12 Maanden",
+    "optionMonthly": "Per Maand",
+    "optionLifetime": "Levenslang",
+    "bestDeal": "Beste deal",
+    "saveAmount": "Bespaar 180 euro",
+    "noDiscount": "Geen korting",
+    "lifetimeAccess": "Toegang voor het leven",
+    "oneTime": "eenmalig",
+    "annualNote": "*Je betaalt €179,88 éénmalig voor het hele jaar.",
+    "monthlyNote": "Betaal per maand. Maandelijks opzegbaar.",
+    "lifetimeNote": "Eenmalig bedrag, levenslange toegang.",
+    "cta": "Probeer het nu 4 dagen gratis 👉",
+    "features": {
+      "12months": {
+        "access": "12 maanden toegang"
+      },
+      "monthly": {
+        "access": "Maandelijkse toegang"
+      },
+      "lifetime": {
+        "access": "Levenslange toegang"
+      },
+      "tv": "Durmus TV",
+      "courses": "Cursussen",
+      "library": "Oefenbibliotheek"
+    },
+    "demoNote": "Dit is een demo. Er worden geen echte aankopen gedaan."
+  },
+ "purchasePage": {
+    "checkout": "Afrekenen",
+    "invoiceDetails": "Factuurgegevens",
+    "firstName": "Voornaam *",
+    "lastName": "Achternaam *",
+    "emailAddress": "E-mailadres *",
+    "companyName": "Bedrijfsnaam (optioneel)",
+    "vatNumber": "BTW-nummer (optioneel)",
+    "selectCountry": "Selecteer land *",
+    "countries": {
+      "netherlands": "Nederland",
+      "belgium": "België",
+      "germany": "Duitsland"
+    },
+    "streetAddress": "Straatnaam en huisnummer *",
+    "yourOrder": "Jouw bestelling",
+    "total": "Totaal",
+    "recurring": "Terugkerend",
+    "firstRenewal": "Eerste verlenging",
+    "termsIntro": "Door verder te gaan accepteer je de",
+    "terms": "algemene voorwaarden",
+    "privacy": "privacyverklaring",
+    "and": "en",
+    "startFreeTrial": "Start gratis proefperiode",
+    "invalidPlan": "Ongeldig abonnement geselecteerd.",
+    "loading": "Bezig met laden...",
+    "plans": {
+      "planAnnual": {
+        "name": "durmusgym – Jaarabonnement",
+        "price": 179.88,
+        "trial": "4 dagen gratis proefperiode & €0,01 inschrijving",
+        "recurring": "€179,88 / jaar",
+        "renewal": "20/05/2025"
+      },
+      "planMonthly": {
+        "name": "durmusgym – Maandelijks",
+        "price": 29.99,
+        "trial": "4 dagen gratis proefperiode & €0,01 inschrijving",
+        "recurring": "€29,99 / maand",
+        "renewal": "20/06/2025"
+      },
+      "planLifetime": {
+        "name": "durmusgym – Levenslang",
+        "price": 599.00,
+        "trial": "4 dagen gratis proefperiode & €0,01 inschrijving",
+        "recurring": "Eenmalige betaling",
+        "renewal": "Levenslange toegang"
+      }
+    }
+  },
+  "loadingImage": "Afbeelding wordt geladen..."
 }

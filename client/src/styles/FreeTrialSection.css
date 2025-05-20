@@ -1,0 +1,33 @@
+/* src/styles/FreeTrialSection.css */
+
+.free-trial-section {
+    padding: 4rem 2rem;
+    background: #000;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .free-trial-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .trial-card {
+    background: #111;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 250px;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .trial-card:hover {
+    background: #e50914;
+    color: #fff;
+  }
+  
