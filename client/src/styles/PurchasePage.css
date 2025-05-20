@@ -1,0 +1,98 @@
+/* src/styles/PurchasePage.css */
+
+.purchase-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+    color: #fff;
+    background: #000;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .purchase-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+  
+  .checkout-form {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .checkout-form input,
+  .checkout-form select {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    background: #222;
+    color: #fff;
+  }
+  
+  .order-summary {
+    flex: 1;
+    min-width: 300px;
+    background: #111;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+  }
+  
+  .order-summary table {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .order-summary td {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
+  
+  .payment-methods {
+    margin-top: 1rem;
+  }
+  
+  .payment-methods label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cards img {
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .privacy {
+    font-size: 0.85rem;
+    margin: 1rem 0;
+  }
+  
+  .checkout-button {
+    width: 100%;
+    padding: 1rem;
+    background: #e50914;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+  
+  .checkout-button:hover {
+    background-color: #c40812;
+  }
+  .cards svg {
+    margin-right: 20px;
+    vertical-align: middle; /* optional, to align nicely */
+  }
+  

@@ -1,11 +1,11 @@
 {
   "yogaPage": {
-    "title": "Yoganın Faydalarını Deneyimleyin",
-    "subtitle": "Bedeninizi Güçlendirin, Zihninizi Rahatlatın",
-    "description": "Uzman eğitmenler eşliğinde yoga seanslarımıza katılın ve esnekliğinizi, dengenizi ve iç huzurunuzu artırın.",
-    "description2": "Başlangıç seviyesinden ileri seviyeye kadar herkes için uygundur.",
-    "description3": "Stresi azaltın, farkındalığınızı artırın ve rehberli derslerimizle gücünüzü geliştirin.",
-    "freeTrialText": "Ücretsiz Bir Ders Deneyin"
+    "title": "Yoga'nın Faydalarını Deneyimleyin",
+    "subtitle": "Vücudunuzu güçlendirin, zihninizi rahatlatın",
+    "description": "Uzmanlar eşliğinde yoga seanslarımıza katılın, esnekliğinizi, dengenizi ve iç huzurunuzu geliştirin.",
+    "description2": "Başlangıç seviyesinden ileri düzeye kadar herkese uygundur.",
+    "description3": "Stresi azaltın, farkındalığınızı artırın ve rehberli derslerimizle güç kazanın.",
+    "freeTrialText": "Ücretsiz deneme dersi deneyin"
   },
   "footer": {
     "location": "Konum",
@@ -16,17 +16,108 @@
     "email": "info@durmusgym.nl",
     "phone": "+31 6 33820475",
     "gymName": "DurmusGym",
-    "chamberOfCommerce": "Ticaret Odası Numarası: 1111111"
+    "chamberOfCommerce": "Ticaret Odası No: 1111111"
   },
   "navbar": {
-    "personalTraining": "Kişisel Eğitim",
+    "personalTraining": "Kişisel Antrenman",
     "pilates": "Pilates",
     "diet": "Diyet",
-    "about": "Hakkında",
+    "about": "Hakkımızda",
     "method": "Yöntem",
     "contact": "İletişim",
-    "freeTrial": "Ücretsiz Deneme Dersi",
-    "yoga": "Yoga"
+    "freeTrial": "Ücretsiz Deneme",
+    "yoga": "Yoga",
+    "login": "Giriş"
+  },
+  "login": {
+    "welcome": "Hoş geldiniz! Devam etmek için giriş yapın.",
+    "newHere": "DurmusGym'e yeni misiniz?",
+    "freeTrialLink": "Şimdi 4 gün ücretsiz deneyin!",
+    "email": "E-posta Adresi",
+    "password": "Şifre",
+    "remember": "Beni Hatırla",
+    "forgot": "Şifrenizi mi unuttunuz?",
+    "signin": "Giriş Yap"
+  },
+  "freeTrial": {
+    "title": "Ücretsiz Deneme Döneminize Şimdi Başlayın",
+    "option12": "12 Ay",
+    "optionMonthly": "Aylık",
+    "optionLifetime": "Ömür Boyu",
+    "bestDeal": "En İyi Fırsat",
+    "saveAmount": "180 € Tasarruf",
+    "noDiscount": "İndirim Yok",
+    "lifetimeAccess": "Ömür Boyu Erişim",
+    "oneTime": "tek seferlik",
+    "annualNote": "*Tüm yıl için 179,88 € tek seferlik ödeme yaparsınız.",
+    "monthlyNote": "Aylık ödeme. İstediğiniz zaman iptal edebilirsiniz.",
+    "lifetimeNote": "Tek seferlik ödeme, ömür boyu erişim.",
+    "cta": "Şimdi 4 gün ücretsiz deneyin 👉",
+    "features": {
+      "12months": {
+        "access": "12 ay erişim"
+      },
+      "monthly": {
+        "access": "Aylık erişim"
+      },
+      "lifetime": {
+        "access": "Ömür boyu erişim"
+      },
+      "tv": "Durmus TV",
+      "courses": "Kurslar",
+      "library": "Uygulama Kütüphanesi"
+    },
+    "demoNote": "Bu bir demo. Gerçek satın almalar yapılmamaktadır."
+  },
+  "purchasePage": {
+    "checkout": "Ödeme",
+    "invoiceDetails": "Fatura Bilgileri",
+    "firstName": "Ad *",
+    "lastName": "Soyad *",
+    "emailAddress": "E-posta Adresi *",
+    "companyName": "Şirket Adı (isteğe bağlı)",
+    "vatNumber": "KDV Numarası (isteğe bağlı)",
+    "selectCountry": "Ülke Seç *",
+    "countries": {
+      "netherlands": "Hollanda",
+      "belgium": "Belçika",
+      "germany": "Almanya"
+    },
+    "streetAddress": "Sokak Adı ve Kapı Numarası *",
+    "yourOrder": "Siparişiniz",
+    "total": "Toplam",
+    "recurring": "Tekrarlayan",
+    "firstRenewal": "İlk Yenileme",
+    "termsIntro": "Devam ederek aşağıdakileri kabul edersiniz:",
+    "terms": "şartlar ve koşullar",
+    "privacy": "gizlilik politikası",
+    "and": "ve",
+    "startFreeTrial": "Ücretsiz Denemeyi Başlat",
+    "invalidPlan": "Geçersiz plan seçildi.",
+    "loading": "Yükleniyor...",
+    "plans": {
+      "planAnnual": {
+        "name": "durmusgym – Yıllık",
+        "price": 179.88,
+        "trial": "4 günlük deneme & €0,01 kayıt",
+        "recurring": "€179,88 / yıl",
+        "renewal": "20/05/2025"
+      },
+      "planMonthly": {
+        "name": "durmusgym – Aylık",
+        "price": 29.99,
+        "trial": "4 günlük deneme & €0,01 kayıt",
+        "recurring": "€29,99 / ay",
+        "renewal": "20/06/2025"
+      },
+      "planLifetime": {
+        "name": "durmusgym – Ömür Boyu",
+        "price": 599.00,
+        "trial": "4 günlük deneme & €0,01 kayıt",
+        "recurring": "Tek seferlik ödeme",
+        "renewal": "Ömür boyu erişim"
+      }
+    }
   },
   "loadingImage": "Resim yükleniyor..."
 }

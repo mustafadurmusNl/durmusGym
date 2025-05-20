@@ -1,32 +1,123 @@
 {
   "yogaPage": {
     "title": "Experience the Benefits of Yoga",
-    "subtitle": "Strengthen Your Body, Relax Your Mind",
-    "description": "Join our expert-led yoga sessions and improve your flexibility, balance, and inner peace.",
-    "description2": "Perfect for all levels, from beginners to advanced practitioners.",
-    "description3": "Reduce stress, enhance mindfulness, and build strength with our guided classes.",
-    "freeTrialText": "Try a Free Lesson"
+    "subtitle": "Strengthen your body, relax your mind",
+    "description": "Join our yoga sessions guided by experts to improve your flexibility, balance, and inner peace.",
+    "description2": "Suitable for all levels, from beginners to advanced.",
+    "description3": "Reduce stress, increase mindfulness, and build strength with our guided classes.",
+    "freeTrialText": "Try a free class"
   },
   "footer": {
     "location": "Location",
     "addressLine1": "Moregrebstraat 56",
     "addressLine2": "Bergen op Zoom, 4622JD",
-    "socials": "Socials",
+    "socials": "Social Media",
     "contact": "Contact",
     "email": "info@durmusgym.nl",
     "phone": "+31 6 33820475",
     "gymName": "DurmusGym",
-    "chamberOfCommerce": "Chamber of Commerce Number: 1111111"
+    "chamberOfCommerce": "Chamber of Commerce No: 1111111"
   },
   "navbar": {
     "personalTraining": "Personal Training",
     "pilates": "Pilates",
     "diet": "Diet",
-    "about": "About",
+    "about": "About Us",
     "method": "Method",
     "contact": "Contact",
-    "freeTrial": "Free Trial Lesson",
-    "yoga": "Yoga"
+    "freeTrial": "Free Trial",
+    "yoga": "Yoga",
+    "login": "Login"
+  },
+  "login": {
+    "welcome": "Welcome! Please log in to continue.",
+    "newHere": "New to DurmusGym?",
+    "freeTrialLink": "Try it now with a free 4-day trial!",
+    "email": "Email Address",
+    "password": "Password",
+    "remember": "Remember me",
+    "forgot": "Forgot your password?",
+    "signin": "Sign In"
+  },
+  "freeTrial": {
+    "title": "Start Your Free Trial Now",
+    "option12": "12 Months",
+    "optionMonthly": "Monthly",
+    "optionLifetime": "Lifetime",
+    "bestDeal": "Best Deal",
+    "saveAmount": "Save €180",
+    "noDiscount": "No Discount",
+    "lifetimeAccess": "Lifetime Access",
+    "oneTime": "one-time",
+    "annualNote": "*You pay €179.88 one-time for the whole year.",
+    "monthlyNote": "Pay monthly. Cancel anytime.",
+    "lifetimeNote": "One-time payment, lifetime access.",
+    "cta": "Try it now free for 4 days 👉",
+    "features": {
+      "12months": {
+        "access": "12 months access"
+      },
+      "monthly": {
+        "access": "Monthly access"
+      },
+      "lifetime": {
+        "access": "Lifetime access"
+      },
+      "tv": "Durmus TV",
+      "courses": "Courses",
+      "library": "Practice Library"
+    },
+    "demoNote": "This is a demo. No real purchases are made."
+  },
+  "purchasePage": {
+    "checkout": "Checkout",
+    "invoiceDetails": "Invoice Details",
+    "firstName": "First Name *",
+    "lastName": "Last Name *",
+    "emailAddress": "Email Address *",
+    "companyName": "Company Name (optional)",
+    "vatNumber": "VAT Number (optional)",
+    "selectCountry": "Select Country *",
+    "countries": {
+      "netherlands": "Netherlands",
+      "belgium": "Belgium",
+      "germany": "Germany"
+    },
+    "streetAddress": "Street Name and House Number *",
+    "yourOrder": "Your Order",
+    "total": "Total",
+    "recurring": "Recurring",
+    "firstRenewal": "First Renewal",
+    "termsIntro": "By continuing, you accept the",
+    "terms": "terms & conditions",
+    "privacy": "privacy policy",
+    "and": "and",
+    "startFreeTrial": "Start Free Trial",
+    "invalidPlan": "Invalid plan selected.",
+    "loading": "Loading...",
+    "plans": {
+      "planAnnual": {
+        "name": "durmusgym – Annual",
+        "price": 179.88,
+        "trial": "4 day trial & €0.01 signup",
+        "recurring": "€179.88 / year",
+        "renewal": "20/05/2025"
+      },
+      "planMonthly": {
+        "name": "durmusgym – Monthly",
+        "price": 29.99,
+        "trial": "4 day trial & €0.01 signup",
+        "recurring": "€29.99 / month",
+        "renewal": "20/06/2025"
+      },
+      "planLifetime": {
+        "name": "durmusgym – Lifetime",
+        "price": 599.00,
+        "trial": "4 day trial & €0.01 signup",
+        "recurring": "One-time payment",
+        "renewal": "Lifetime access"
+      }
+    }
   },
   "loadingImage": "Loading image..."
 }

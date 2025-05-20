@@ -5,7 +5,7 @@ import IntroSection from "../components/IntroSection";
 import PersonalApproach from "../components/PersonalApproach";
 import OptionsSection from "../components/OptionsSection";
 import SignupSection from "../components/SignupSection";
-
+import FreeTrialSection from "../components/FreeTrialSection"; // Import the new Free Trial Section
 const HomePage = () => {
   const { translations, isLoading: isLoadingTranslations } = useTranslation("homePage");
   const [introImage, setIntroImage] = useState(null);
@@ -45,6 +45,8 @@ const HomePage = () => {
       />
       <OptionsSection translations={translations?.options} />
       <SignupSection translations={translations?.signup} />
+       {/* New Free Trial Scroll Section */}
+    <FreeTrialSection />
     </div>
   );
 };
