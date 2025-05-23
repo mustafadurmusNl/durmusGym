@@ -1,10 +1,9 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000";  // Update with your server URL if needed
+const BASE_URL =
+  process.env.REACT_APP_BASE_SERVER_URL || "http://localhost:5000";
 
 export const fetchImages = async (category, limit) => {
- 
-
   try {
     const response = await axios.get(`${BASE_URL}/api/images`, {
       params: { category, limit },
