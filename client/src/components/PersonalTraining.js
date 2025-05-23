@@ -26,7 +26,8 @@ const PersonalTraining = () => {
   }, []);
 
   if (isLoading) return <div>Loading translations...</div>;
-  if (!translations) return <div>No translations available for Personal Training page.</div>;
+  if (!translations)
+    return <div>No translations available for Personal Training page.</div>;
 
   return (
     <div className="personal-training-container">
@@ -37,9 +38,7 @@ const PersonalTraining = () => {
           <p>{translations.subtitle}</p>
           <p>{translations.description}</p>
           <Link to="/free-trial-page">
-            <button className="cta-button">
-              {translations.freeTrialText}
-            </button>
+            <button className="cta-button">{translations.freeTrialText}</button>
           </Link>
         </div>
         <div className="image-content">
@@ -48,7 +47,7 @@ const PersonalTraining = () => {
           ) : (
             image && (
               <img
-                src={image?.src?.large}
+                src={image?.src?.original}
                 alt={image?.alt || "Personal Training"}
                 className="hero-image"
               />

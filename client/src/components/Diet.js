@@ -35,10 +35,8 @@ const Diet = () => {
           <h1>{translations.title}</h1>
           <p>{translations.subtitle}</p>
           <p>{translations.description}</p>
-          <Link to="/free-trial">
-            <button className="cta-button">
-              {translations.freeTrialText}
-            </button>
+          <Link to="/free-trial" className="cta-button">
+            {translations.freeTrialText}
           </Link>
         </div>
         <div className="image-content">

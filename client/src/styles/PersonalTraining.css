@@ -1,57 +1,61 @@
-/* Overall container background */
+/* Container for whole PersonalTraining page */
 .personal-training-container {
+  background-color: #333;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 20px;
-  background-color: #333; /* Dark background for the entire container */
-  color: white; /* White text color for contrast */
-  min-height: 100vh; /* Ensure the container takes full viewport height */
 }
 
-/* Hero Section */
+/* HERO SECTION: full screen split */
 .hero-section {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
   width: 100%;
+  min-height: 100vh; /* Full viewport height */
+  box-sizing: border-box;
 }
 
+/* Text area: fixed max width, vertical center */
 .text-content {
+  flex: 1 1 500px;
   max-width: 500px;
-  text-align: left; /* Align text to the left */
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.text-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.text-content p {
-  font-size: 1.2rem;
+/* Image area: fill remaining space, center image */
+.image-content {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 30px;
+  box-sizing: border-box;
 }
 
 .image-content img {
   max-width: 100%;
-  height: auto;
-  border-radius: 8px; /* Optional: add rounded corners to the image */
+  max-height: 80vh; /* limit height to prevent overflow */
+  object-fit: contain;
+  border-radius: 8px;
 }
 
-/* Second Section (Details and Form) */
+/* DETAILS SECTION below hero */
 .details-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center; /* Center text horizontally */
-  margin-top: 40px;
-  background-color: #444; /* Darker background for the second section */
-  padding: 40px 20px; /* Add padding for spacing */
-  border-radius: 8px; /* Optional: round the corners */
+  background-color: #444;
   width: 100%;
-  max-width: 800px; /* Limit the width for larger screens */
+  max-width: 800px;
+  margin: 40px auto 0 auto;
+  padding: 40px 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-sizing: border-box;
+  color: white;
 }
 
 .details-section h2 {
@@ -65,12 +69,12 @@
 }
 
 .trial-form {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the form fields */
-  width: 100%;
-  max-width: 500px; /* Limit the form width */
-  margin-top: 20px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-group {
@@ -81,41 +85,87 @@
 .form-group label {
   font-size: 1.1rem;
   margin-bottom: 5px;
+  display: block;
+  text-align: left;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
   padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #555; /* Darker background for inputs */
-  color: white; /* White text in input fields */
+  border: 1px solid #ccc;
+  background-color: #555;
+  color: white;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #007bff; /* Highlight border color on focus */
+  border-color: #007bff;
 }
 
-/* Green Button Styles */
-.cta-button, .send-button {
-  padding: 15px 30px; /* Larger padding for bigger buttons */
-  background-color: #28a745; /* Green background color */
+.cta-button,
+.send-button {
+  padding: 15px 30px;
+  background-color: #28a745;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 1.2rem; /* Slightly larger text for better readability */
-  transition: background-color 0.3s ease; /* Smooth transition on hover */
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+  text-decoration: none; /* <-- add this */
 }
 
-.cta-button:hover, .send-button:hover {
-  background-color: #218838; /* Darker green on hover */
+.cta-button:hover,
+.send-button:hover {
+  background-color: #218838;
 }
 
-.cta-button:active, .send-button:active {
-  background-color: #1e7e34; /* Even darker green when clicked */
+.cta-button:active,
+.send-button:active {
+  background-color: #1e7e34;
+}
+
+/* RESPONSIVE: stack hero on small screens */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .text-content,
+  .image-content {
+    max-width: 100%;
+    padding: 20px 0;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .text-content {
+    padding-bottom: 10px;
+  }
+
+  .image-content img {
+    max-height: 50vh;
+    width: auto;
+  }
+
+  .form-group label {
+    text-align: center;
+  }
+}
+.text-content .cta-button {
+  display: block;
+  margin: 20px auto 0 auto; /* top margin for spacing, auto horizontal for centering */
+}
+.personal-training-container a {
+  text-decoration: none;
+}
+.personal-training-container a:hover {
+  text-decoration: none;
 }

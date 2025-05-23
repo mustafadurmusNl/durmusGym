@@ -26,7 +26,8 @@ const Pilates = () => {
   }, []);
 
   if (isLoading) return <div>Loading translations...</div>;
-  if (!translations) return <div>No translations available for Pilates page.</div>;
+  if (!translations)
+    return <div>No translations available for Pilates page.</div>;
 
   return (
     <div>
@@ -38,7 +39,7 @@ const Pilates = () => {
             ) : (
               pilatesImage && (
                 <img
-                  src={pilatesImage?.src?.large}
+                  src={pilatesImage?.src?.original}
                   alt={pilatesImage?.alt || "Pilates at KoepelGym"}
                   className="hero-image"
                 />
@@ -53,10 +54,8 @@ const Pilates = () => {
             <p>{translations.description3}</p>
             <p>{translations.description4}</p>
             <p>{translations.priceInfo}</p>
-            <Link to="/free-trial">
-              <button className="cta-button">
-                {translations.freeTrialText || "Free Trial Lesson"}
-              </button>
+            <Link to="/free-trial" className="cta-button">
+              {translations.freeTrialText || "Free Trial Lesson"}
             </Link>
           </div>
         </div>

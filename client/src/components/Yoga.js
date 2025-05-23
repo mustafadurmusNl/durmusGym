@@ -33,7 +33,7 @@ const Yoga = () => {
           ) : (
             yogaImage && (
               <img
-                src={yogaImage?.src?.large}
+                src={yogaImage?.src?.original}
                 alt={yogaImage?.alt || "Yoga at DurmusGym"}
                 className="hero-image"
               />
@@ -46,10 +46,10 @@ const Yoga = () => {
           <p>{t("yogaPage.description")}</p>
           <p>{t("yogaPage.description2")}</p>
           <p>{t("yogaPage.description3")}</p>
-          <Link to="/free-trial-page">
-            <button className="cta-button">
-              {t("yogaPage.freeTrialText", { defaultValue: "Free Trial Lesson" })}
-            </button>
+          <Link to="/free-trial-page" className="cta-button">
+            {t("yogaPage.freeTrialText", {
+              defaultValue: "Free Trial Lesson",
+            })}
           </Link>
         </div>
       </div>
