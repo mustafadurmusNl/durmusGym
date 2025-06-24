@@ -1,15 +1,17 @@
 name: Deploy Backend to Render
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main # Adjust if your default branch is not 'main'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Trigger Render Deployment
-        run: curl -X POST https://api.render.com/deploy/srv-XXXXXX
+      - name: Trigger Render Deploy Hook
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
