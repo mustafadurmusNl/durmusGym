@@ -27,23 +27,20 @@ app.use("/api", mediaRoutes);
 app.use("/api/languages", languageRoutes);
 app.use("/api/messages", messageRoutes);
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.resolve(__dirname, '../client/build')));
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
-}
-
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+//   });
+// }
 
 // ✅ Dev/debug endpoint: Returns all images from the database
 app.get("/api/images/all", async (req, res) => {
   if (!isImageDataReady()) {
-    return res
-      .status(503)
-      .json({
-        message: "Images are still being fetched, please try again later.",
-      });
+    return res.status(503).json({
+      message: "Images are still being fetched, please try again later.",
+    });
   }
 
   try {
