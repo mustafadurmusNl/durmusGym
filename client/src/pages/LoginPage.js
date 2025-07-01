@@ -1,11 +1,28 @@
-// src/pages/LoginPage.jsx
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import useLogin from "../hooks/useLogin";
 import "../styles/LoginPage.css";
 
 const LoginPage = () => {
   const { t } = useTranslation();
+  const { login, loading, error } = useLogin();
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await login(email, password);
+    if (result) {
+      if (result.user.isTempPassword) {
+        navigate("/change-password"); // Force password update
+      } else {
+        navigate("/"); // Normal redirect
+      }
+    }
+  };
 
   return (
     <div className="login-container">
@@ -18,12 +35,24 @@ const LoginPage = () => {
           </Link>
         </p>
 
-        <form className="login-form">
+        <form className="login-form" onSubmit={handleSubmit}>
           <label>{t("login.email")}</label>
-          <input type="email" placeholder="you@example.com" required />
+          <input
+            type="email"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
           <label>{t("login.password")}</label>
-          <input type="password" placeholder="••••••••" required />
+          <input
+            type="password"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
 
           <div className="form-options">
             <label className="remember-me">
@@ -35,8 +64,10 @@ const LoginPage = () => {
             </Link>
           </div>
 
-          <button type="submit" className="login-button">
-            {t("login.signin")}
+          {error && <p className="error-message">{error}</p>}
+
+          <button type="submit" className="login-button" disabled={loading}>
+            {loading ? t("login.signingIn") : t("login.signin")}
           </button>
         </form>
       </div>

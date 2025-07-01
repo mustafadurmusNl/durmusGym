@@ -10,7 +10,8 @@ const {
 const mediaRoutes = require("./routes/mediaRoutes");
 const languageRoutes = require("./routes/languageRoutes");
 const messageRoutes = require("./routes/messageRoutes");
-
+const userRoutes = require("./routes/userRoutes");
+const authRoutes = require("./routes/authRoutes");
 const app = express();
 
 // Middleware
@@ -26,7 +27,9 @@ app.use(express.json());
 app.use("/api", mediaRoutes);
 app.use("/api/languages", languageRoutes);
 app.use("/api/messages", messageRoutes);
-
+app.use("/api/users", userRoutes);
+//login
+app.use("/api", authRoutes);
 // if (process.env.NODE_ENV === 'production') {
 //   app.use(express.static(path.resolve(__dirname, '../client/build')));
 
