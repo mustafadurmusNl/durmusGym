@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../styles/IntroSection.css";
 import HeroHighlights from "./HeroHighlights";
 const IntroSection = ({ image, translations }) => {
-  console.log("hoiiiiii", image);
   return (
     <div
       className="intro-section"

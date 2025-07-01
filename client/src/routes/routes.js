@@ -10,6 +10,8 @@ import Yoga from "../components/Yoga";
 import LoginPage from "../pages/LoginPage";
 import FreeTrialPage from "../pages/FreeTrialPage";
 import PurchasePage from "../pages/PurchasePage";
+import ChangePasswordPage from "../pages/ChangePasswordPage";
+
 // Helper function to create routes
 const createRoute = (path, element) => ({ path, element });
 
@@ -26,6 +28,7 @@ const routes = [
   createRoute("/about", <About />),
   createRoute("/free-trial", <Contact />), // Reused Contact component
   createRoute("/yoga", <Yoga />),
+  createRoute("/change-password", <ChangePasswordPage />),
 ];
 
 export default routes;
