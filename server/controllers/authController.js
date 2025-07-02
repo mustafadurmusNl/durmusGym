@@ -1,5 +1,6 @@
 const User = require("../models/User"); // Your Mongoose User model
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
+
 const jwt = require("jsonwebtoken");
 
 exports.loginUser = async (req, res) => {
