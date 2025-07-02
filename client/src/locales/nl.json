@@ -28,7 +28,23 @@
     "freeTrial": "Gratis proefles",
     "yoga": "Yoga",
     "login": "Inloggen",
-    "library": "Bibliotheek"
+    "library": "Bibliotheek",
+    "welcome": "Welkom",
+    "profile": "Profiel",
+    "logout": "Uitloggen",
+    "startFreeTrial": "Start Gratis Proefles"
+  },
+  "profile": {
+    "welcomeBack": "Welkom terug",
+    "firstName": "Voornaam:",
+    "lastName": "Achternaam:",
+    "email": "E-mail:",
+    "membership": "Lidmaatschap:",
+    "free": "Gratis",
+    "upgradeMembership": "Lidmaatschap upgraden",
+    "uploadPhoto": "Foto uploaden",
+    "guestWelcome": "Welkom, Gast!",
+    "guestPrompt": "Gelieve <login>in te loggen</login> of <trial>start een gratis proefles</trial>."
   },
   "login": {
     "welcome": "Welkom! Log in om door te gaan.",
