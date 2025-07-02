@@ -2,7 +2,7 @@
 const BASE_URL = process.env.REACT_APP_BASE_SERVER_URL;
 
 export const loginUser = async ({ email, password }) => {
-  const response = await fetch(`${BASE_URL}/api/login`, {
+  const response = await fetch(`${BASE_URL}/api/users/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

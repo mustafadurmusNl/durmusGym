@@ -29,7 +29,7 @@ app.use("/api/languages", languageRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 //login
-app.use("/api", authRoutes);
+app.use("/api/users", authRoutes);
 // if (process.env.NODE_ENV === 'production') {
 //   app.use(express.static(path.resolve(__dirname, '../client/build')));
 

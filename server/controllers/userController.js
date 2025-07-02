@@ -2,6 +2,7 @@ const { createUser } = require("../services/userService");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const User = require("../models/User"); // Make sure to import your User model here
+const bcrypt = require("bcryptjs");
 
 exports.registerUser = async (req, res) => {
   try {
@@ -102,8 +103,6 @@ exports.registerUser = async (req, res) => {
     });
   }
 };
-
-const bcrypt = require("bcryptjs");
 
 exports.changePassword = async (req, res) => {
   try {

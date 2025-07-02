@@ -27,7 +27,8 @@
     "contact": "İletişim",
     "freeTrial": "Ücretsiz Deneme",
     "yoga": "Yoga",
-    "login": "Giriş"
+    "login": "Giriş",
+    "library": "Kütüphane"
   },
   "login": {
     "welcome": "Hoş geldiniz! Devam etmek için giriş yapın.",
@@ -112,7 +113,7 @@
       },
       "planLifetime": {
         "name": "durmusgym – Ömür Boyu",
-        "price": 599.00,
+        "price": 599.0,
         "trial": "4 günlük deneme & €0,01 kayıt",
         "recurring": "Tek seferlik ödeme",
         "renewal": "Ömür boyu erişim"
