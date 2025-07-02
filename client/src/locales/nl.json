@@ -27,7 +27,8 @@
     "contact": "Contact",
     "freeTrial": "Gratis proefles",
     "yoga": "Yoga",
-    "login": "Inloggen"
+    "login": "Inloggen",
+    "library": "Bibliotheek"
   },
   "login": {
     "welcome": "Welkom! Log in om door te gaan.",
@@ -69,7 +70,7 @@
     },
     "demoNote": "Dit is een demo. Er worden geen echte aankopen gedaan."
   },
- "purchasePage": {
+  "purchasePage": {
     "checkout": "Afrekenen",
     "invoiceDetails": "Factuurgegevens",
     "firstName": "Voornaam *",
@@ -112,7 +113,7 @@
       },
       "planLifetime": {
         "name": "durmusgym – Levenslang",
-        "price": 599.00,
+        "price": 599.0,
         "trial": "4 dagen gratis proefperiode & €0,01 inschrijving",
         "recurring": "Eenmalige betaling",
         "renewal": "Levenslange toegang"

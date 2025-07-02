@@ -1,3 +1,4 @@
+// src/routes/routes.js
 import HomePage from "../pages/HomePage";
 import PersonalTraining from "../components/PersonalTraining";
 import Diet from "../components/Diet";
@@ -11,8 +12,9 @@ import LoginPage from "../pages/LoginPage";
 import FreeTrialPage from "../pages/FreeTrialPage";
 import PurchasePage from "../pages/PurchasePage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
+import Library from "../components/Library"; // NEW
+import PrivateRoute from "../components/PrivateRoute"; // NEW
 
-// Helper function to create routes
 const createRoute = (path, element) => ({ path, element });
 
 const routes = [
@@ -26,9 +28,17 @@ const routes = [
   createRoute("/contact", <Contact />),
   createRoute("/method", <Method />),
   createRoute("/about", <About />),
-  createRoute("/free-trial", <Contact />), // Reused Contact component
+  createRoute("/free-trial", <Contact />),
   createRoute("/yoga", <Yoga />),
   createRoute("/change-password", <ChangePasswordPage />),
+
+  // ✅ Protected route
+  createRoute(
+    "/library",
+    <PrivateRoute>
+      <Library />
+    </PrivateRoute>
+  ),
 ];
 
 export default routes;

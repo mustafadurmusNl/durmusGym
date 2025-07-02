@@ -27,7 +27,8 @@
     "contact": "Contact",
     "freeTrial": "Free Trial",
     "yoga": "Yoga",
-    "login": "Login"
+    "login": "Login",
+    "library": "Library"
   },
   "login": {
     "welcome": "Welcome! Please log in to continue.",
@@ -112,7 +113,7 @@
       },
       "planLifetime": {
         "name": "durmusgym – Lifetime",
-        "price": 599.00,
+        "price": 599.0,
         "trial": "4 day trial & €0.01 signup",
         "recurring": "One-time payment",
         "renewal": "Lifetime access"

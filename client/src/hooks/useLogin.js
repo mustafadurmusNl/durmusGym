@@ -1,27 +1,29 @@
-// src/hooks/useLogin.js
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { loginUser } from "../services/authService";
+import { AuthContext } from "../context/AuthContext";
 
 const useLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const login = async (email, password) => {
+  const { login } = useContext(AuthContext); // get login function from context
+
+  const performLogin = async (email, password) => {
     setLoading(true);
     setError(null);
     try {
       const response = await loginUser({ email, password });
-      localStorage.setItem("token", response.token); // veya cookie varsa gerek yok
+      login(response.token, response.user); // set context state here
       setLoading(false);
       return response;
     } catch (err) {
-      setError(err.message);
+      setError(err.message || "Login failed");
       setLoading(false);
       return null;
     }
   };
 
-  return { login, loading, error };
+  return { login: performLogin, loading, error };
 };
 
 export default useLogin;
