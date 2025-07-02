@@ -14,7 +14,7 @@ import PurchasePage from "../pages/PurchasePage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
 import Library from "../components/Library"; // NEW
 import PrivateRoute from "../components/PrivateRoute"; // NEW
-
+import Profile from "../components/Profile"; // NEW
 const createRoute = (path, element) => ({ path, element });
 
 const routes = [
@@ -31,6 +31,8 @@ const routes = [
   createRoute("/free-trial", <Contact />),
   createRoute("/yoga", <Yoga />),
   createRoute("/change-password", <ChangePasswordPage />),
+  // Profile route is public (no PrivateRoute wrapper)
+  createRoute("/profile", <Profile />),
 
   // ✅ Protected route
   createRoute(

@@ -28,7 +28,23 @@
     "freeTrial": "Ücretsiz Deneme",
     "yoga": "Yoga",
     "login": "Giriş",
-    "library": "Kütüphane"
+    "library": "Kütüphane",
+    "welcome": "Hoşgeldiniz",
+    "profile": "Profil",
+    "logout": "Çıkış Yap",
+    "startFreeTrial": "Ücretsiz Denemeyi Başlat"
+  },
+  "profile": {
+    "welcomeBack": "Tekrar hoş geldiniz",
+    "firstName": "Ad:",
+    "lastName": "Soyad:",
+    "email": "E-posta:",
+    "membership": "Üyelik:",
+    "free": "Ücretsiz",
+    "upgradeMembership": "Üyeliği Yükselt",
+    "uploadPhoto": "Fotoğraf Yükle",
+    "guestWelcome": "Hoş geldiniz, Misafir!",
+    "guestPrompt": "Lütfen <login>Giriş Yapın</login> veya <trial>Ücretsiz Deneme Başlatın</trial>."
   },
   "login": {
     "welcome": "Hoş geldiniz! Devam etmek için giriş yapın.",

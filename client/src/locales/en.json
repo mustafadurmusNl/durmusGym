@@ -28,7 +28,23 @@
     "freeTrial": "Free Trial",
     "yoga": "Yoga",
     "login": "Login",
-    "library": "Library"
+    "library": "Library",
+    "welcome": "Welcome",
+    "profile": "Profile",
+    "logout": "Logout",
+    "startFreeTrial": "Start Free Trial"
+  },
+  "profile": {
+    "welcomeBack": "Welcome back",
+    "firstName": "First Name:",
+    "lastName": "Last Name:",
+    "email": "Email:",
+    "membership": "Membership:",
+    "free": "Free",
+    "upgradeMembership": "Upgrade Membership",
+    "uploadPhoto": "Upload Photo",
+    "guestWelcome": "Welcome, Guest!",
+    "guestPrompt": "Please <login>Sign In</login> or <trial>Start a Free Trial</trial>."
   },
   "login": {
     "welcome": "Welcome! Please log in to continue.",
