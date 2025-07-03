@@ -136,5 +136,13 @@
       }
     }
   },
+  "purchaseSuccess": {
+    "congratulations": "🎉 Gefeliciteerd!",
+    "welcomeMessage": "Bedankt dat je lid bent geworden van DurmusGym. Laten we samen sterker worden!",
+    "checkEmail": "Controleer je e-mail voor je tijdelijke wachtwoord.",
+    "loginNow": "Inloggen",
+    "resetInfo": "Klik op Inloggen en vergeet je wachtwoord niet opnieuw in te stellen om van je abonnement te genieten."
+  },
+
   "loadingImage": "Afbeelding wordt geladen..."
 }

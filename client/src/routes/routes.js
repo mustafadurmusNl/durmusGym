@@ -15,6 +15,7 @@ import ChangePasswordPage from "../pages/ChangePasswordPage";
 import Library from "../components/Library"; // NEW
 import PrivateRoute from "../components/PrivateRoute"; // NEW
 import Profile from "../components/Profile"; // NEW
+import PurchaseSuccess from "../components/PurchaseSuccess"; // NEW
 const createRoute = (path, element) => ({ path, element });
 
 const routes = [
@@ -33,6 +34,7 @@ const routes = [
   createRoute("/change-password", <ChangePasswordPage />),
   // Profile route is public (no PrivateRoute wrapper)
   createRoute("/profile", <Profile />),
+  createRoute("/purchase-success", <PurchaseSuccess />),
 
   // ✅ Protected route
   createRoute(

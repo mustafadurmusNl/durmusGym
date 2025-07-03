@@ -1,0 +1,97 @@
+.purchase-success-container {
+  flex: 1; /* key line to make it fill remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.success-card {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.success-card h1 {
+  font-size: 2.2rem;
+  color: #2ecc71;
+  margin-bottom: 1rem;
+}
+
+.success-card p {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 1.2rem;
+}
+
+.success-card p strong {
+  color: #2d3436;
+}
+
+.success-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.success-actions a,
+.success-actions button {
+  padding: 0.75rem 1.5rem;
+  background-color: #2ecc71;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.success-actions a:hover,
+.success-actions button:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+}
+
+/* Confetti Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional confetti background for decoration */
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url("https://cdn.jsdelivr.net/gh/JulianNorton/confetti.js/confetti.gif");
+  background-size: cover;
+  opacity: 0.2;
+  z-index: 0;
+}
+@media (max-height: 700px) {
+  .purchase-success-container {
+    justify-content: flex-start;
+    padding-top: 3rem;
+  }
+}
