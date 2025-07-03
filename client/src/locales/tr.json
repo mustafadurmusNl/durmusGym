@@ -136,5 +136,13 @@
       }
     }
   },
+  "purchaseSuccess": {
+    "congratulations": "🎉 Tebrikler!",
+    "welcomeMessage": "DurmusGym'e katıldığınız için teşekkür ederiz. Birlikte daha güçlü olalım!",
+    "checkEmail": "Geçici şifreniz için lütfen e-posta kutunuzu kontrol edin.",
+    "loginNow": "Giriş Yap",
+    "resetInfo": "Giriş yap’a tıklayın ve şifrenizi sıfırlamayı unutmayın. Aboneliğinizin keyfini çıkarın!"
+  },
+
   "loadingImage": "Resim yükleniyor..."
 }

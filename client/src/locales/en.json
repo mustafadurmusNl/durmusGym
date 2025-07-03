@@ -136,5 +136,12 @@
       }
     }
   },
+  "purchaseSuccess": {
+    "congratulations": "🎉 Congratulations!",
+    "welcomeMessage": "Thank you for joining DurmusGym. Let’s grow stronger together!",
+    "checkEmail": "Please check your email for your temporary password.",
+    "loginNow": "Log In",
+    "resetInfo": "Click Log In and don’t forget to reset your password to begin enjoying your subscription."
+  },
   "loadingImage": "Loading image..."
 }

@@ -63,10 +63,8 @@ const PurchasePage = () => {
       });
 
       if (response.success) {
-        setSuccessMsg(
-          response.message ||
-            "Registration successful! Please check your email."
-        );
+        navigate("/purchase-success");
+
         // Optionally clear form or redirect on success
         // setFormData({ ...initial state or empty strings });
       }
@@ -150,7 +148,7 @@ const PurchasePage = () => {
 
           <button type="submit" className="checkout-button" disabled={loading}>
             {loading
-              ? t("purchasePage.processing")
+              ? t("purchasePage.loading")
               : t("purchasePage.startFreeTrial")}
           </button>
 
