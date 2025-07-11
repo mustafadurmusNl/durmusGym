@@ -4,9 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 20px;
+  padding: 20px;
   box-sizing: border-box;
-  background-color: #111;
+  background-color: white;
 }
 
 .intro-grid {
@@ -14,20 +14,16 @@
   flex-direction: row;
   width: 100%;
   max-width: 1400px;
-  height: 600px; /* Görsel ve sol blok eş yükseklikte */
-  gap: 40px;
+  height: 600px;
+  gap: 20px;
 }
-
 .intro-left {
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  padding: 2px;
   height: 100%;
-  overflow: hidden;
-  padding: 20px;
-  background-color: #1e1e1e;
-  border-radius: 12px;
   box-sizing: border-box;
 }
 
@@ -75,25 +71,50 @@
   background-color: #18a00f;
 }
 
-/* Responsive (Tablet ve Telefon) */
-@media (max-width: 992px) {
+/* Mobile adjustments */
+@media (max-width: 600px) {
   .intro-grid {
     flex-direction: column;
-    height: auto;
+    height: 100vh;
+    width: 100%;
+    gap: 0;
   }
 
   .intro-left,
   .intro-right {
     width: 100%;
-    height: auto;
+    height: 50vh;
+    padding: 0;
+    margin: 0;
+  }
+
+  .intro-left {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 8px; /* 👈 Adds spacing between 3 elements and image */
+  }
+
+  .intro-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .intro-image {
-    height: 300px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0;
+    position: relative;
   }
 
   .intro-button-wrapper {
-    top: 85%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
   }
 }
