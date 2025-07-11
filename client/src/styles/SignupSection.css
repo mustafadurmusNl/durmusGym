@@ -1,80 +1,185 @@
 .signup-section {
-    display: flex;
-    height: 100vh;
-    background-color: #4a6077;
-  }
-  
-  .signup-section div:first-child {
-    flex: 1;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .signup-section div:first-child h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: white;
-  }
-  
-  .signup-section div:first-child p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    color: white;
-  }
-  
-  .signup-section div:last-child {
-    flex: 1;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: white;
-  }
-  
-  .signup-section form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .signup-section form label {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .signup-section form input,
-  .signup-section form textarea {
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  .signup-section form button {
-    padding: 0.75rem 1.5rem;
-    font-size: 1,5rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .signup-section form .btn-primary {
-    background-color: #007bff;
-    color: white;
-    font-size: 2rem;
-    width: 50%;
-    border-radius: 10px;
+  display: flex;
+  height: 100vh;
+  background-color: #4a6077;
+  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+.signup-section > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%; /* Yükseklik eşit olsun */
+  box-sizing: border-box;
+}
+.signup-section div:first-child {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  box-sizing: border-box;
+}
+
+.signup-section div:first-child h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.signup-section div:first-child p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.signup-section div:last-child {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  box-sizing: border-box;
+}
+
+.signup-section form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.signup-section form label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.signup-section form input,
+.signup-section form textarea {
+  width: 100%; /* Take full width of the form */
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.signup-section form button {
+  width: 100%;
+  min-width: 150px;
+  max-width: 100%;
+  white-space: nowrap;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.signup-section form .btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.signup-section form .btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Response message styling */
+.response-message {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .signup-section {
+    flex-direction: column; /* Stack vertically on mobile */
+    height: auto; /* Allow height to adjust to content */
+    padding: 1.5rem 1rem; /* Adjust padding for the section itself */
   }
 
-  
-  .signup-section form .btn-success {
-    background-color: #28a745;
-    color: white;
-    margin-top: 0.5rem;
-    font-size: 2rem;
-    width: 50%;
-    border-radius: 10px;
+  .signup-section > div {
+    padding: 1rem 0; /* Adjust padding for inner divs */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Center text content */
   }
+
+  .signup-section form {
+    width: 100%; /* Form takes full width of its parent div */
+    max-width: 400px; /* Limit form width on mobile */
+    padding: 0 1rem; /* Add horizontal padding to the form itself */
+    box-sizing: border-box; /* Crucial for padding to be inside width */
+  }
+
+  .signup-section form input,
+  .signup-section form textarea {
+    width: 100%; /* Inputs/textareas take full width of the padded form */
+    /* Removed max-width here to ensure it scales with parent's padding */
+  }
+
+  .signup-section form button {
+    width: 100%; /* Buttons take full width of the padded form */
+    /* Removed max-width here to ensure it scales with parent's padding */
+    font-size: 1.2rem; /* Adjust button font size for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-section {
+    padding: 1rem 0.5rem; /* Even smaller padding for very small screens */
+  }
+
+  .signup-section > div {
+    padding: 0.8rem 0;
+  }
+
+  .signup-section form {
+    padding: 0 0.5rem; /* Smaller horizontal padding for the form */
+  }
+
+  .signup-section form input,
+  .signup-section form textarea {
+    padding: 0.5rem; /* Reduce input/textarea padding */
+    font-size: 0.9rem; /* Reduce input/textarea font size */
+  }
+
+  .signup-section form button {
+    font-size: 0.9rem; /* Further reduce button font size */
+    padding: 0.5rem 0.8rem; /* Adjust button padding */
+  }
+}
+
+/* New breakpoint for very small screens like iPhone SE (320px) */
+@media (max-width: 375px) {
+  .signup-section {
+    padding: 0.8rem 0.2rem; /* Minimal padding for the section */
+  }
+
+  .signup-section > div {
+    padding: 0.5rem 0;
+  }
+
+  .signup-section form {
+    padding: 0 0.2rem; /* Minimal horizontal padding for the form */
+  }
+
+  .signup-section form input,
+  .signup-section form textarea {
+    padding: 0.4rem; /* Even smaller input/textarea padding */
+    font-size: 0.85rem; /* Even smaller input/textarea font size */
+  }
+
+  .signup-section form button {
+    font-size: 0.85rem; /* Smallest button font size */
+    padding: 0.4rem 0.6rem; /* Smallest button padding */
+  }
+}

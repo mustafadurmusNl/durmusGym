@@ -1,5 +1,5 @@
 import React from "react";
-import { Dumbbell, HeartPulse, CalendarCheck } from "lucide-react"; // if using lucide icons
+import { Dumbbell, HeartPulse, CalendarCheck } from "lucide-react";
 import "../styles/HeroHighlights.css";
 
 const HeroHighlights = () => {

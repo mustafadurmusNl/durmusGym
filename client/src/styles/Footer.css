@@ -1,61 +1,72 @@
 .footer-container {
-    background-color: #1a1a1a;
-    color: white;
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-  }
-  
+  background-color: #1a1a1a;
+  color: white;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center; /* Center all sections horizontally */
+  gap: 180px; /* Space between sections, adjust as needed */
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  text-align: center;
+  padding: 10px;
+  min-width: 180px; /* Prevent sections from shrinking too much */
+}
+
+.footer-section h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.social-icon {
+  font-size: 1.8rem;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  opacity: 0.8;
+}
+
+.instagram {
+  color: #e4405f; /* Instagram pink */
+}
+
+.whatsapp {
+  color: #25d366; /* WhatsApp green */
+}
+
+.footer-copyright {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
   .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    gap: 50px;
   }
-  
-  .footer-section {
-    text-align: center;
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
   }
-  
-  .footer-section h3 {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  .footer-icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 5px;
-  }
-  
-  .social-icon {
-    font-size: 1.5rem;
-    color: white;
-    transition: color 0.3s;
-  }
-  
-  .footer-copyright {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #ccc;
-  }
-  .footer-centered {
-    display: flex;
-    justify-content: center;
-    gap: 180px; /* Adjust this value to control spacing */
-    flex-wrap: wrap;
-  }
-  
-  .footer-section {
-    text-align: center;
-    padding: 10px; /* Adds some padding around each section */
-  }
-  .instagram {
-    color: #E4405F; /* Instagram's original color */
-  }
-  
-  .whatsapp {
-    color: #25D366; /* WhatsApp green */
-  }
-  
+}
