@@ -1,36 +1,54 @@
 .options-section {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100vh;
-    background-color: #4a6077;
-  }
-  
-  .option-card {
-    width: 25%;
-    padding: 3rem;
-    text-align: center;
-    background: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .option-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .option-card p {
-    font-size: 1rem;
-    color: #6c757d;
-  }
-  
-  /* src/styles/OptionsSection.css */
-.options-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: stretch; /* Burayı stretch yap */
+  height: 100vh;
+  background-color: #4a6077;
   padding: 3rem;
   gap: 2rem;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
+.option-card {
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 30%; /* Flex-grow, flex-shrink ve baz genişlik */
+  min-width: 280px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* İstersen içeriği dikeyde yaymak için */
+}
+
+.option-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.option-card p {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .options-section {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .option-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+}
