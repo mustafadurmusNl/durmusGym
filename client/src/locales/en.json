@@ -143,5 +143,13 @@
     "loginNow": "Log In",
     "resetInfo": "Click Log In and don’t forget to reset your password to begin enjoying your subscription."
   },
+  "heroHighlights": {
+    "title1": "Tailored Training",
+    "desc1": "Programs built around your body and your goals — no cookie-cutter plans.",
+    "title2": "Whole-Body Wellness",
+    "desc2": "Balance strength, mobility, and mindset for real transformation.",
+    "title3": "Train on Your Time",
+    "desc3": "Flexible scheduling that fits your lifestyle, not the other way around."
+  },
   "loadingImage": "Loading image..."
 }
