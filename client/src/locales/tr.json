@@ -143,6 +143,13 @@
     "loginNow": "Giriş Yap",
     "resetInfo": "Giriş yap’a tıklayın ve şifrenizi sıfırlamayı unutmayın. Aboneliğinizin keyfini çıkarın!"
   },
-
+  "heroHighlights": {
+    "title1": "Kişiye Özel Antrenman",
+    "desc1": "Vücudunuza ve hedeflerinize uygun özel programlar — standart planlar değil.",
+    "title2": "Tüm Vücut Sağlığı",
+    "desc2": "Güç, esneklik ve zihni birleştirin, gerçek dönüşüm için.",
+    "title3": "Zamanında Antrenman",
+    "desc3": "Yaşam tarzınıza uygun esnek planlama."
+  },
   "loadingImage": "Resim yükleniyor..."
 }

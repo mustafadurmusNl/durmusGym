@@ -143,6 +143,13 @@
     "loginNow": "Inloggen",
     "resetInfo": "Klik op Inloggen en vergeet je wachtwoord niet opnieuw in te stellen om van je abonnement te genieten."
   },
-
+  "heroHighlights": {
+    "title1": "Op Maat Gemaakte Training",
+    "desc1": "Programma's afgestemd op jouw lichaam en doelen — geen standaardplannen.",
+    "title2": "Wellness Voor Het Hele Lichaam",
+    "desc2": "Combineer kracht, mobiliteit en mindset voor echte transformatie.",
+    "title3": "Train Wanneer Het Jou Uitkomt",
+    "desc3": "Flexibele planning die past bij jouw levensstijl, niet andersom."
+  },
   "loadingImage": "Afbeelding wordt geladen..."
 }
