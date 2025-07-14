@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import "../styles/PurchasePage.css";
 import { FaCcVisa, FaCcMastercard, FaCcAmex } from "react-icons/fa";
 import { registerUser } from "../services/registerService";
-
+import { isValidName } from "../util/inputSanitizer";
 const plans = {
   "12months": { key: "planAnnual" },
   monthly: { key: "planMonthly" },
@@ -50,27 +50,30 @@ const PurchasePage = () => {
     setSuccessMsg("");
     setErrorMsg("");
 
+    // ✅ Basit doğrulama
+    if (!isValidName(formData.firstName) || !isValidName(formData.lastName)) {
+      setErrorMsg("Lütfen geçerli bir isim ve soyisim girin.");
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await registerUser({
         email: formData.email,
         firstName: formData.firstName,
         lastName: formData.lastName,
         country: formData.country,
-        street: formData.streetAddress,
-        company: formData.companyName,
+        streetAddress: formData.streetAddress,
+        companyName: formData.companyName,
         vatNumber: formData.vatNumber,
         membershipType: option,
       });
 
       if (response.success) {
         navigate("/purchase-success");
-
-        // Optionally clear form or redirect on success
-        // setFormData({ ...initial state or empty strings });
       }
-      // No 'else' block for !response.success here, because errors are thrown by registerService
     } catch (error) {
-      console.error("Registration error:", error); // Log the full error object for debugging
+      console.error("Registration error:", error);
       setErrorMsg(
         error.message || "An unexpected error occurred during registration."
       );

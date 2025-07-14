@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+
 const {
-  fetchAndStoreImages,
   getImagesFromDB,
   isImageDataReady,
 } = require("./services/imageService");
@@ -12,6 +12,7 @@ const languageRoutes = require("./routes/languageRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
+
 const app = express();
 
 // Middleware
@@ -28,20 +29,13 @@ app.use("/api", mediaRoutes);
 app.use("/api/languages", languageRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
-//login
 app.use("/api/users", authRoutes);
+
 app.get("/api/health", (req, res) => {
   res.status(200).send("OK");
 });
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-//   });
-// }
-
-// ✅ Dev/debug endpoint: Returns all images from the database
+// Images route
 app.get("/api/images/all", async (req, res) => {
   if (!isImageDataReady()) {
     return res.status(503).json({
@@ -62,8 +56,5 @@ app.get("/api/images/all", async (req, res) => {
     res.status(500).json({ error: "Failed to retrieve images from database." });
   }
 });
-
-// Fetch and store images when the server starts
-fetchAndStoreImages();
 
 module.exports = app;
