@@ -12,7 +12,7 @@ const PersonalApproach = ({ image, translations }) => {
           {translations?.description ||
             "At DurmusGym we believe in a personal approach..."}
         </p>
-        <Link to="/method" className="btn btn-secondary">
+        <Link to="/personal-training" className="btn btn-secondary">
           {translations?.button || "Discover Working Method"}
         </Link>
       </div>

@@ -1,7 +1,7 @@
 .signup-section {
   display: flex;
   height: 100vh;
-  background-color: #4a6077;
+
   box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 .signup-section > div {
@@ -83,7 +83,7 @@
 }
 
 .signup-section form .btn-primary {
-  background-color: #007bff;
+  background-color: #ff0000;
   color: white;
 }
 

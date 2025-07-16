@@ -3,7 +3,6 @@
   justify-content: space-around;
   align-items: stretch; /* Burayı stretch yap */
   height: 100vh;
-  background-color: #4a6077;
   padding: 3rem;
   gap: 2rem;
   box-sizing: border-box;
@@ -32,7 +31,7 @@
 
 .option-card p {
   font-size: 1rem;
-  color: #6c757d;
+  color: #7d6c6f;
 }
 
 /* Mobile responsiveness */
