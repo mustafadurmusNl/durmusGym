@@ -15,8 +15,10 @@ const FreeTrialSection = () => {
         <div className="plan-card best-deal">
           <div className="plan-header">
             <h2>{t("freeTrial.option12")}</h2>
-            <span className="badge">{t("freeTrial.bestDeal")}</span>
-            <div className="sub-badge">{t("freeTrial.saveAmount")}</div>
+            <div className="badge-group">
+              <span className="badge">{t("freeTrial.bestDeal")}</span>
+              <div className="sub-badge">{t("freeTrial.saveAmount")}</div>
+            </div>
           </div>
           <div className="price">
             14.99<span>/month*</span>

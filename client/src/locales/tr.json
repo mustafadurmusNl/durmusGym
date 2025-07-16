@@ -145,11 +145,13 @@
   },
   "heroHighlights": {
     "title1": "Kişiye Özel Antrenman",
-    "desc1": "Vücudunuza ve hedeflerinize uygun özel programlar — standart planlar değil.",
-    "title2": "Tüm Vücut Sağlığı",
-    "desc2": "Güç, esneklik ve zihni birleştirin, gerçek dönüşüm için.",
-    "title3": "Zamanında Antrenman",
-    "desc3": "Yaşam tarzınıza uygun esnek planlama."
+    "desc1": "Vücuduna ve hedeflerine özel programlar — hazır kalıplara göre değil.",
+
+    "title2Pilates": "Merkezini Güçlendir",
+    "desc2Pilates": "Pilates vücudu güçlendirir, duruşu geliştirir ve uzun vadeli esneklik sağlar.",
+
+    "title3Diet": "Fitness'ını Besle",
+    "desc3Diet": "Doğru beslenme performansı artırır, toparlanmayı hızlandırır ve kalıcı fitness başarısının temelini oluşturur."
   },
   "loadingImage": "Resim yükleniyor..."
 }

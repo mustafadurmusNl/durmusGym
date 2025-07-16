@@ -146,10 +146,12 @@
   "heroHighlights": {
     "title1": "Tailored Training",
     "desc1": "Programs built around your body and your goals — no cookie-cutter plans.",
-    "title2": "Whole-Body Wellness",
-    "desc2": "Balance strength, mobility, and mindset for real transformation.",
-    "title3": "Train on Your Time",
-    "desc3": "Flexible scheduling that fits your lifestyle, not the other way around."
+
+    "title2Pilates": "Empower Your Core",
+    "desc2Pilates": "Pilates strengthens your body, improves posture, and builds sustainable flexibility for long-term wellness.",
+
+    "title3Diet": "Fuel Your Fitness",
+    "desc3Diet": "Proper nutrition enhances performance, speeds recovery, and lays the foundation for long-term fitness success."
   },
   "loadingImage": "Loading image..."
 }

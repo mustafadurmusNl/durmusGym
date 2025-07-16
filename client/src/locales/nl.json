@@ -144,12 +144,14 @@
     "resetInfo": "Klik op Inloggen en vergeet je wachtwoord niet opnieuw in te stellen om van je abonnement te genieten."
   },
   "heroHighlights": {
-    "title1": "Op Maat Gemaakte Training",
+    "title1": "Op maat gemaakte training",
     "desc1": "Programma's afgestemd op jouw lichaam en doelen — geen standaardplannen.",
-    "title2": "Wellness Voor Het Hele Lichaam",
-    "desc2": "Combineer kracht, mobiliteit en mindset voor echte transformatie.",
-    "title3": "Train Wanneer Het Jou Uitkomt",
-    "desc3": "Flexibele planning die past bij jouw levensstijl, niet andersom."
+
+    "title2Pilates": "Versterk je core",
+    "desc2Pilates": "Pilates versterkt je lichaam, verbetert je houding en bevordert duurzame flexibiliteit voor langdurige gezondheid.",
+
+    "title3Diet": "Voed je fitheid",
+    "desc3Diet": "Goede voeding verbetert prestaties, versnelt herstel en vormt de basis voor blijvend succes in fitness."
   },
   "loadingImage": "Afbeelding wordt geladen..."
 }

@@ -1,64 +1,98 @@
-/* Force the container to exactly 50vh and divide space evenly */
 .hero-highlights {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
-  height: 100%;
   width: 100%;
-  gap: 20px;
+  height: 100vh; /* or full height of the container */
+  gap: 8px; /* more space between elements */
+  padding: 20px;
+}
+
+.highlight-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+  flex: 1; /* Distribute space equally */
 }
 
 .highlight-item {
-  flex: 1;
+  background: rgba(7, 7, 7, 0.8);
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+  box-sizing: border-box;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(7, 7, 7, 0.8);
-  border-radius: 10px;
-  margin: 2px 0;
-  padding: 4px;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.highlight-icon {
-  font-size: 1.4rem;
-  color: #1fd312;
-  margin-bottom: 4px;
-}
-
-.highlight-item h3 {
-  font-size: 1rem;
-  margin-bottom: 4px;
-  color: #fff;
-}
-
-.highlight-item p {
-  font-size: 0.75rem;
-  line-height: 1.2;
-  color: #ccc;
-}
-
-.highlight-item:hover {
+.highlight-link:hover .highlight-item {
   transform: translateY(-4px);
   background: rgba(0, 0, 0, 0.6);
 }
 
-/* OPTIONAL: Only keep this if you want a different layout for tablets or mobile */
+.highlight-icon {
+  font-size: 2rem;
+  color: #1fd312;
+  margin-bottom: 12px;
+}
+
+.highlight-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.highlight-item p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+/* Mobile: 3 items stacked, cover top 50vh */
 @media (max-width: 600px) {
+  .hero-highlights {
+    flex-direction: column;
+    height: 50vh;
+    padding: 0 12px; /* horizontal padding to match image edges */
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .highlight-link {
+    width: 100%;
+    height: calc((50vh - 12px) / 3); /* 3 items, 2 gaps (6px each) */
+    max-width: 100%;
+  }
+
+  .highlight-item {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
   .highlight-icon {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    margin-bottom: 6px;
   }
 
   .highlight-item h3 {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    margin-bottom: 4px;
   }
 
   .highlight-item p {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    margin: 0;
   }
 }
