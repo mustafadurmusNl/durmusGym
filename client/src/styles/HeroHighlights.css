@@ -1,9 +1,18 @@
-.hero-highlights {
+.hero-slider {
   display: flex;
+  flex-direction: column;
+  height: 100%; /* ← Ensure it fills its container */
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* Reduced gap between highlight and dots */
+}
+
+.highlight-slide {
+  flex: 1; /* Let it grow to use vertical space */
   width: 100%;
-  height: 100vh; /* or full height of the container */
-  gap: 8px; /* more space between elements */
-  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .highlight-link {
@@ -11,13 +20,12 @@
   color: inherit;
   display: block;
   width: 100%;
-  flex: 1; /* Distribute space equally */
 }
 
 .highlight-item {
   background: rgba(7, 7, 7, 0.8);
   border-radius: 12px;
-  padding: 24px 16px;
+  padding: 20px 16px;
   text-align: center;
   box-sizing: border-box;
   height: 100%;
@@ -47,52 +55,65 @@
 
 .highlight-item p {
   font-size: 0.9rem;
-  line-height: 1.4;
   color: #ccc;
+  line-height: 1.4;
 }
 
-/* Mobile: 3 items stacked, cover top 50vh */
-@media (max-width: 600px) {
-  .hero-highlights {
-    flex-direction: column;
-    height: 50vh;
-    padding: 0 12px; /* horizontal padding to match image edges */
-    gap: 6px;
-    justify-content: center;
-    align-items: center;
-  }
+/* Dots */
+.highlight-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+  padding: 8px 0;
+}
 
-  .highlight-link {
-    width: 100%;
-    height: calc((50vh - 12px) / 3); /* 3 items, 2 gaps (6px each) */
-    max-width: 100%;
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dot.active {
+  background-color: #1fd312;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .dot {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #1fd312;
+    background-color: #fff;
+  }
+  .dot.active {
+    background-color: #1fd312;
+    border-color: #1fd312;
+  }
+  .hero-slider {
+    gap: 12px;
   }
 
   .highlight-item {
-    height: 100%;
-    width: 100%;
-    border-radius: 10px;
-    padding: 12px;
+    height: 180px; /* fixed height to unify size */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
   }
 
   .highlight-icon {
     font-size: 1.25rem;
-    margin-bottom: 6px;
   }
 
   .highlight-item h3 {
     font-size: 1rem;
-    margin-bottom: 4px;
   }
 
   .highlight-item p {
-    font-size: 0.75rem;
-    line-height: 1.2;
-    margin: 0;
+    font-size: 0.8rem;
   }
 }
