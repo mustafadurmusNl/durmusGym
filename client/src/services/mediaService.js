@@ -15,3 +15,19 @@ export const fetchImages = async (category, limit) => {
     return [];
   }
 };
+export const fetchVideos = async (page = 1, limit = 10, category = "") => {
+  try {
+    const response = await axios.get(`${BASE_URL}/api/videos`, {
+      params: {
+        category,
+        page,
+        limit,
+      },
+    });
+
+    return response.data || { videos: [], totalPages: 0 };
+  } catch (error) {
+    console.error("Error fetching videos:", error);
+    return { videos: [], totalPages: 0 };
+  }
+};

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/IntroSection.css";
 import HeroHighlights from "./HeroHighlights";
-
+import LibraryTeaser from "./LibraryTeaser";
 const IntroSection = ({ image, translations }) => {
   return (
     <div className="intro-section">
@@ -10,6 +10,11 @@ const IntroSection = ({ image, translations }) => {
         <div className="intro-left">
           <HeroHighlights />
         </div>
+
+        <div className="intro-middle">
+          <LibraryTeaser category="personal" />
+        </div>
+
         <div className="intro-right">
           <div
             className="intro-image"

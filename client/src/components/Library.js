@@ -1,38 +1,61 @@
-// src/pages/Library.js
+// src/components/Library.js
 import React, { useEffect, useState } from "react";
-import { fetchImages } from "../services/mediaService";
+import { fetchVideos } from "../services/mediaService";
+
+import { CATEGORIES } from "../constants/categories";
+import "../styles/Library.css";
+
+const CATEGORY_LABELS = {
+  [CATEGORIES.PERSONAL]: "Body Building",
+  [CATEGORIES.YOGA]: "Flexibility & Yoga",
+  [CATEGORIES.DIET]: "Nutrition & Diet",
+};
+
+const DISPLAY_CATEGORIES = [
+  CATEGORIES.PERSONAL,
+  CATEGORIES.YOGA,
+  CATEGORIES.DIET,
+];
 
 const Library = () => {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [categoryVideos, setCategoryVideos] = useState({});
 
   useEffect(() => {
-    const loadImages = async () => {
-      const data = await fetchImages("all", 10); // Example: fetch all categories with limit
-      setImages(data);
-      setLoading(false);
+    const loadVideos = async () => {
+      const results = {};
+      for (const category of DISPLAY_CATEGORIES) {
+        const res = await fetchVideos(1, 4, category);
+        results[category] = res.videos || [];
+      }
+      setCategoryVideos(results);
     };
-
-    loadImages();
+    loadVideos();
   }, []);
-
-  if (loading) return <div>Loading media...</div>;
 
   return (
     <div className="library-page">
-      <h2>Media Library</h2>
-      <div className="media-grid">
-        {images.length > 0 ? (
-          images.map((img, index) => (
-            <div key={index} className="media-item">
-              <img src={img.url} alt={img.title || `media-${index}`} />
-              <p>{img.title}</p>
-            </div>
-          ))
-        ) : (
-          <p>No media found.</p>
-        )}
-      </div>
+      <h1 className="library-title">Explore Our Training Library</h1>
+
+      {DISPLAY_CATEGORIES.map((category) => (
+        <div key={category} className="library-section">
+          <h2 className="library-category-title">
+            {CATEGORY_LABELS[category]}
+          </h2>
+          <div className="video-grid">
+            {categoryVideos[category]?.map((video) => (
+              <div key={video._id} className="video-card">
+                <div className="video-wrapper">
+                  <video controls>
+                    <source src={video.url} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <p className="video-title">{video.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

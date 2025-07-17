@@ -11,14 +11,15 @@
 
 .intro-grid {
   display: flex;
-  flex-direction: row;
   width: 100%;
   max-width: 1400px;
   height: 600px;
   gap: 20px;
 }
+
+/* === Column widths === */
 .intro-left {
-  flex: 1;
+  flex: 0 0 25%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,8 +28,19 @@
   box-sizing: border-box;
 }
 
+.intro-middle {
+  flex: 0 0 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2px;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
 .intro-right {
-  flex: 1;
+  flex: 0 0 50%;
   position: relative;
   height: 100%;
   display: flex;
@@ -71,50 +83,36 @@
   background-color: #18a00f;
 }
 
-/* Mobile adjustments */
-@media (max-width: 600px) {
+/* === Responsive === */
+@media (max-width: 1024px) {
   .intro-grid {
     flex-direction: column;
-    height: 100vh;
-    width: 100%;
-    gap: 0;
+    height: auto;
+    gap: 20px;
   }
 
   .intro-left,
+  .intro-middle,
   .intro-right {
+    flex: 1 1 100%;
     width: 100%;
-    height: 50vh;
-    padding: 0;
-    margin: 0;
-  }
-
-  .intro-left {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    overflow: hidden;
-    margin-bottom: 8px; /* 👈 Adds spacing between 3 elements and image */
-  }
-
-  .intro-right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: auto;
   }
 
   .intro-image {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    border-radius: 0;
-    position: relative;
+    height: 300px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-image {
+    height: 250px;
+    border-radius: 8px;
   }
 
-  .intro-button-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
   }
 }
