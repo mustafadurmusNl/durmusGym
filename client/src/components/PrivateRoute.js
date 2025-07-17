@@ -1,23 +1,24 @@
 // src/components/PrivateRoute.js
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
-  const [unauthorized, setUnauthorized] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!loading && !user) {
-      setUnauthorized(true);
+      const confirmed = window.confirm(
+        "👋 Please log in or try free trial to access the training library."
+      );
+      if (confirmed) {
+        navigate("/free-trial-page");
+      }
     }
-  }, [loading, user]);
+  }, [loading, user, navigate]);
 
-  if (loading) return <div>Loading...</div>;
-
-  if (unauthorized) {
-    window.alert("Please register or log in to access the Library.");
-    return null; // Prevent rendering child content
-  }
+  if (loading || (!user && !loading)) return null;
 
   return children;
 };
