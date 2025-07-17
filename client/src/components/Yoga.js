@@ -5,7 +5,7 @@ import { fetchImages } from "../services/mediaService";
 import { CATEGORIES } from "../constants/categories";
 
 const Yoga = () => {
-  const { t, i18n } = useTranslation(); // Using default "translation" namespace
+  const { t } = useTranslation(); // Using default "translation" namespace
   const [yogaImage, setYogaImage] = useState(null);
   const [isImageLoading, setIsImageLoading] = useState(true);
 
