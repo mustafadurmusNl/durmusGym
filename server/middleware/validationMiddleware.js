@@ -1,9 +1,6 @@
 // server/middleware/validationMiddleware.js
 
-const {
-  validateRegistration,
-  sanitizeRegistration,
-} = require("../validators/userValidator");
+const { validateRegistration } = require("../validators/userValidator");
 
 const registrationValidationMiddleware = (req, res, next) => {
   const errors = validateRegistration(req.body);
@@ -15,7 +12,6 @@ const registrationValidationMiddleware = (req, res, next) => {
     });
   }
 
-  req.body = sanitizeRegistration(req.body);
   next();
 };
 

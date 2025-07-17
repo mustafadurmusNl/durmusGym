@@ -1,8 +1,9 @@
 const { createUser } = require("../services/userService");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
-const User = require("../models/User"); // Make sure to import your User model here
+const User = require("../models/User");
 const bcrypt = require("bcryptjs");
+const xss = require("xss"); // ✅ NEW: use for safe rendering
 
 exports.registerUser = async (req, res) => {
   try {
@@ -17,7 +18,6 @@ exports.registerUser = async (req, res) => {
       membershipType,
     } = req.body;
 
-    // Check if user with this email already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       console.log(`Attempted registration with existing email: ${email}`);
@@ -49,29 +49,22 @@ exports.registerUser = async (req, res) => {
       text: `Hi ${firstName},\n\nThanks for signing up for the ${membershipType} plan.\nYour temporary password: ${generatedPassword}\nPlease log in and change it.\n\n- DurmusGym Team`,
     });
 
-    if (!emailSent) {
-      return res.status(201).json({
-        success: true,
-        userId: newUser._id,
-        message: "User registered, but email failed to send",
-        emailSent: false,
-      });
-    }
-
     return res.status(201).json({
       success: true,
       userId: newUser._id,
-      message: "User registered and email sent",
-      emailSent: true,
+      message: `User registered${
+        !emailSent ? ", but email failed to send" : " and email sent"
+      }`,
+      emailSent,
+      // ✅ Escape values before rendering if needed
+      safePreview: {
+        firstName: xss(firstName),
+        email: xss(email),
+      },
     });
   } catch (err) {
-    // This catches race conditions where two users register with the same email
-    // at the exact same time, and the 'unique: true' index constraint is triggered.
     if (err.code === 11000 && err.keyValue && err.keyValue.email) {
-      console.error(
-        "❌ Race condition: Duplicate email caught by DB index",
-        err.keyValue.email
-      );
+      console.error("❌ Duplicate email:", err.keyValue.email);
       return res.status(409).json({
         success: false,
         message:
@@ -79,24 +72,15 @@ exports.registerUser = async (req, res) => {
       });
     }
 
-    // Handles Mongoose validation errors (e.g., missing required fields, invalid email format if defined in schema)
     if (err.name === "ValidationError") {
       const errors = Object.values(err.errors).map((el) => el.message);
-      console.error(
-        "❌ Registration failed: Mongoose Validation Error",
-        errors
-      );
       return res.status(400).json({
         success: false,
         message: errors.join(", ") || "Validation error during registration.",
       });
     }
 
-    // Generic fallback for any other unexpected server errors
-    console.error(
-      "❌ An unexpected server error occurred during registration:",
-      err
-    );
+    console.error("❌ Server error during registration:", err);
     return res.status(500).json({
       success: false,
       message: "An unexpected server error occurred during registration.",
@@ -109,17 +93,14 @@ exports.changePassword = async (req, res) => {
     const userId = req.user?.userId;
     const { newPassword } = req.body;
 
-    // ✅ 1. Check required data
     if (!userId || !newPassword) {
       return res
         .status(400)
         .json({ message: "Missing userId or new password" });
     }
 
-    // ✅ 2. Hash the new password
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-    // ✅ 3. Update user
     const updatedUser = await User.findByIdAndUpdate(
       userId,
       {
@@ -129,7 +110,6 @@ exports.changePassword = async (req, res) => {
       { new: true }
     );
 
-    // ✅ 4. Handle not found case
     if (!updatedUser) {
       return res.status(404).json({ message: "User not found" });
     }
