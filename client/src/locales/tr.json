@@ -153,5 +153,21 @@
     "title3Diet": "Fitness'ını Besle",
     "desc3Diet": "Doğru beslenme performansı artırır, toparlanmayı hızlandırır ve kalıcı fitness başarısının temelini oluşturur."
   },
+  "library": {
+    "title": "Antrenman Kütüphanemizi Keşfedin",
+    "categories": {
+      "personal": "Vücut Geliştirme",
+      "yoga": "Esneklik & Yoga",
+      "diet": "Beslenme & Diyet"
+    },
+    "loginRequired": "👋 Lütfen giriş yapın",
+    "closeButton": "Kapat"
+  },
+  "libraryTeaser": {
+    "title": "Online Antrenman",
+    "noSupport": "Tarayıcınız video etiketini desteklemiyor.",
+    "message": "Uzman çevrimiçi antrenman programlarımızla potansiyelinizi ortaya çıkarın! Yeni başlıyor olun ya da daha yükseğe çıkmak isteyin, esnek antrenmanlarımız yoğun hayatınıza uyum sağlar. Her yerde, her zaman antrenman yapın; gücünüzün ve özgüveninizin arttığını görün. Dönüşümünüze bugün başlayın!"
+  },
+
   "loadingImage": "Resim yükleniyor..."
 }

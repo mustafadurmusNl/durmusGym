@@ -153,5 +153,20 @@
     "title3Diet": "Voed je fitheid",
     "desc3Diet": "Goede voeding verbetert prestaties, versnelt herstel en vormt de basis voor blijvend succes in fitness."
   },
+  "library": {
+    "title": "Ontdek Onze Trainingsbibliotheek",
+    "categories": {
+      "personal": "Krachttraining",
+      "yoga": "Flexibiliteit & Yoga",
+      "diet": "Voeding & Dieet"
+    },
+    "loginRequired": "👋 Log alstublieft in",
+    "closeButton": "Sluiten"
+  },
+  "libraryTeaser": {
+    "title": "Online Training",
+    "noSupport": "Uw browser ondersteunt de video tag niet.",
+    "message": "Ontgrendel je potentieel met onze deskundige online trainingsprogramma's! Of je nu net begint of hoger wilt mikken, onze flexibele workouts passen in jouw drukke leven. Train overal, altijd, en zie je kracht en zelfvertrouwen groeien. Begin vandaag nog met je transformatie!"
+  },
   "loadingImage": "Afbeelding wordt geladen..."
 }

@@ -1,15 +1,10 @@
-// src/components/Library.js
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { fetchVideos } from "../services/mediaService";
-
+import { AuthContext } from "../context/AuthContext";
+import SecureVideoPlayer from "./SecureVideoPlayer";
 import { CATEGORIES } from "../constants/categories";
+import { useTranslation } from "react-i18next";
 import "../styles/Library.css";
-
-const CATEGORY_LABELS = {
-  [CATEGORIES.PERSONAL]: "Body Building",
-  [CATEGORIES.YOGA]: "Flexibility & Yoga",
-  [CATEGORIES.DIET]: "Nutrition & Diet",
-};
 
 const DISPLAY_CATEGORIES = [
   CATEGORIES.PERSONAL,
@@ -18,7 +13,16 @@ const DISPLAY_CATEGORIES = [
 ];
 
 const Library = () => {
+  const { t } = useTranslation();
   const [categoryVideos, setCategoryVideos] = useState({});
+  const [selectedVideoId, setSelectedVideoId] = useState(null);
+  const { user, token } = useContext(AuthContext);
+
+  const CATEGORY_LABELS = {
+    [CATEGORIES.PERSONAL]: t("library.categories.personal"),
+    [CATEGORIES.YOGA]: t("library.categories.yoga"),
+    [CATEGORIES.DIET]: t("library.categories.diet"),
+  };
 
   useEffect(() => {
     const loadVideos = async () => {
@@ -32,9 +36,17 @@ const Library = () => {
     loadVideos();
   }, []);
 
+  const handleVideoClick = (id) => {
+    if (!user) {
+      alert(t("library.loginRequired"));
+      return;
+    }
+    setSelectedVideoId(id);
+  };
+
   return (
     <div className="library-page">
-      <h1 className="library-title">Explore Our Training Library</h1>
+      <h1 className="library-title">{t("library.title")}</h1>
 
       {DISPLAY_CATEGORIES.map((category) => (
         <div key={category} className="library-section">
@@ -43,19 +55,31 @@ const Library = () => {
           </h2>
           <div className="video-grid">
             {categoryVideos[category]?.map((video) => (
-              <div key={video._id} className="video-card">
-                <div className="video-wrapper">
-                  <video controls>
-                    <source src={video.url} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
+              <div
+                key={video._id}
+                className="video-card"
+                onClick={() => handleVideoClick(video._id)}
+              >
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  className="video-thumbnail"
+                />
                 <p className="video-title">{video.title}</p>
               </div>
             ))}
           </div>
         </div>
       ))}
+
+      {selectedVideoId && (
+        <div className="video-modal">
+          <SecureVideoPlayer videoId={selectedVideoId} token={token} />
+          <button onClick={() => setSelectedVideoId(null)}>
+            {t("library.closeButton")}
+          </button>
+        </div>
+      )}
     </div>
   );
 };

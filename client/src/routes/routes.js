@@ -35,14 +35,7 @@ const routes = [
   // Profile route is public (no PrivateRoute wrapper)
   createRoute("/profile", <Profile />),
   createRoute("/purchase-success", <PurchaseSuccess />),
-
-  // ✅ Protected route
-  createRoute(
-    "/library",
-    <PrivateRoute>
-      <Library />
-    </PrivateRoute>
-  ),
+  createRoute("/library", <Library />),
 ];
 
 export default routes;

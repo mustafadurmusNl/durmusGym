@@ -153,5 +153,20 @@
     "title3Diet": "Fuel Your Fitness",
     "desc3Diet": "Proper nutrition enhances performance, speeds recovery, and lays the foundation for long-term fitness success."
   },
+  "library": {
+    "title": "Explore Our Training Library",
+    "categories": {
+      "personal": "Body Building",
+      "yoga": "Flexibility & Yoga",
+      "diet": "Nutrition & Diet"
+    },
+    "loginRequired": "👋 Please log in",
+    "closeButton": "Close"
+  },
+  "libraryTeaser": {
+    "title": "Online Training",
+    "noSupport": "Your browser does not support the video tag.",
+    "message": "Unlock your potential with our expert online training programs! Whether you're starting out or aiming higher, our flexible workouts fit your busy life. Train anywhere, anytime, and watch your strength and confidence grow. Start your transformation today!"
+  },
   "loadingImage": "Loading image..."
 }
