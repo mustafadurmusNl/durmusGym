@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { fetchVideos } from "../services/mediaService";
 import { AuthContext } from "../context/AuthContext";
 import SecureVideoPlayer from "./SecureVideoPlayer";
@@ -17,7 +18,7 @@ const Library = () => {
   const [categoryVideos, setCategoryVideos] = useState({});
   const [selectedVideoId, setSelectedVideoId] = useState(null);
   const { user, token } = useContext(AuthContext);
-
+  const navigate = useNavigate(); // <- ekledik
   const CATEGORY_LABELS = {
     [CATEGORIES.PERSONAL]: t("library.categories.personal"),
     [CATEGORIES.YOGA]: t("library.categories.yoga"),
@@ -35,10 +36,15 @@ const Library = () => {
     };
     loadVideos();
   }, []);
-
   const handleVideoClick = (id) => {
     if (!user) {
-      alert(t("library.loginRequired"));
+      // alert yerine window.confirm ile yönlendirme
+      const goToLogin = window.confirm(
+        `${t("library.loginRequired")} \n\nPress OK to login.`
+      );
+      if (goToLogin) {
+        navigate("/login"); // <- login sayfasına yönlendiriyoruz
+      }
       return;
     }
     setSelectedVideoId(id);
