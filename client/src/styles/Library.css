@@ -1,67 +1,284 @@
-/* src/styles/Library.css */
+/* ---------- CSS Variables (kolay tema ayarı) ---------- */
+:root {
+  --bg: #0b0c10;
+  --surface: #111217;
+  --surface-2: #151724;
+  --text: #e8e8ea;
+  --muted: #b7b9c3;
+  --brand: #7c5cff;
+  --brand-2: #4cc9f0;
+  --ring: rgba(124, 92, 255, 0.4);
 
+  --radius: 16px;
+  --shadow-1: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-2: 0 16px 48px rgba(0, 0, 0, 0.35);
+
+  --gap-xs: 8px;
+  --gap-sm: 12px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 40px;
+
+  --transition-fast: 160ms ease;
+  --transition-slow: 300ms ease;
+}
+
+/* ---------- Page Layout ---------- */
 .library-page {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  min-height: 100dvh;
+  padding: clamp(16px, 3vw, 32px);
+  background: radial-gradient(
+      1200px 600px at 10% -10%,
+      rgba(124, 92, 255, 0.15),
+      transparent
+    ),
+    radial-gradient(
+      1000px 500px at 90% -20%,
+      rgba(76, 201, 240, 0.12),
+      transparent
+    ),
+    var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 .library-title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
+  font-size: clamp(24px, 3.2vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 8px 0 24px;
+  line-height: 1.05;
+  background: linear-gradient(90deg, #fff, #cfcff8 30%, #a6e8ff 60%, #fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
+/* ---------- Section ---------- */
 .library-section {
-  margin-bottom: 3rem;
+  margin-bottom: var(--gap-xl);
 }
 
 .library-category-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #333;
+  margin: 0 0 var(--gap-md);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 700;
+  color: #f3f4ff;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(124, 92, 255, 0.15),
+    rgba(76, 201, 240, 0.12)
+  );
+  border: 1px solid rgba(124, 92, 255, 0.25);
 }
 
+/* ---------- Grid ---------- */
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
+  gap: var(--gap-lg);
+  /* default (desktop) 4 sütun */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+/* breakpoint’ler: 4 ➜ 3 ➜ 2 ➜ 1 */
+@media (max-width: 1200px) {
+  .video-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  .video-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Card ---------- */
 .video-card {
-  background: #f8f8f8;
-  border-radius: 10px;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
+  position: relative;
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-slow),
+    box-shadow var(--transition-slow), border-color var(--transition-fast);
+  isolation: isolate;
+}
+
+.video-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+      200px 120px at 20% 0%,
+      rgba(124, 92, 255, 0.2),
+      transparent 60%
+    ),
+    radial-gradient(
+      200px 120px at 80% 0%,
+      rgba(76, 201, 240, 0.18),
+      transparent 60%
+    );
+  opacity: 0.35;
+  transition: opacity var(--transition-fast);
+  z-index: 0;
 }
 
 .video-card:hover {
   transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+  border-color: rgba(124, 92, 255, 0.35);
+}
+.video-card:hover::after {
+  opacity: 0.6;
 }
 
+/* ---------- Thumbnail ---------- */
+.video-thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.05) contrast(1.02);
+  transition: transform var(--transition-slow), filter var(--transition-fast);
+  z-index: 1;
+}
+
+.video-card:hover .video-thumbnail {
+  transform: scale(1.025);
+  filter: saturate(1.15) contrast(1.06);
+}
+
+/* ---------- Title ---------- */
 .video-title {
+  margin: 10px 12px 14px;
+  color: var(--text);
   font-weight: 600;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  color: #444;
-}
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  /* 16:9 aspect ratio */
-  padding-top: 56.25%; /* (9 / 16) * 100% */
-  overflow: hidden;
-  border-radius: 10px;
-  background: #000; /* black background for videos */
+  font-size: 15px;
+  line-height: 1.35;
+  z-index: 1;
 }
 
-.video-wrapper video {
+/* ---------- Focus Ring (klavye erişilebilirliği) ---------- */
+.video-card:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* ---------- Modal (overlay full-screen) ---------- */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: color-mix(in oklab, black 70%, transparent);
+  backdrop-filter: blur(6px) saturate(1.1);
+}
+
+/* Modal içeriği: kart + buton */
+.video-modal > video,
+.video-modal > .secure-player,
+.video-modal > div,
+.video-modal > *:not(button) {
+  width: min(100%, 960px);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow-2);
+  background: #000; /* player kenar boşluğu için güvenli zemin */
+}
+
+/* Modal kapama butonu */
+.video-modal button {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* or 'contain' depending on your preference */
-  border-radius: 10px;
+  top: 18px;
+  right: 18px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: transform var(--transition-fast),
+    background var(--transition-fast), border-color var(--transition-fast);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.video-modal button:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(
+    180deg,
+    rgba(124, 92, 255, 0.25),
+    rgba(255, 255, 255, 0.04)
+  );
+  border-color: rgba(124, 92, 255, 0.45);
+}
+
+.video-modal button:active {
+  transform: translateY(0);
+}
+
+/* Küçük ekranlarda modal padding ve player genişliği */
+@media (max-width: 560px) {
+  .video-modal {
+    padding: 12px;
+  }
+  .video-modal button {
+    top: 12px;
+    right: 12px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+/* ---------- Subtle enter animation ---------- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.video-card {
+  animation: fadeUp 0.4s var(--transition-slow) both;
+}
+
+/* ---------- Optional: Scrollbar styling (WebKit) ---------- */
+.library-page::-webkit-scrollbar {
+  width: 10px;
+}
+.library-page::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+.library-page::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(124, 92, 255, 0.7),
+    rgba(76, 201, 240, 0.7)
+  );
+  border-radius: 999px;
 }
