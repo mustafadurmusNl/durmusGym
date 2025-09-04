@@ -1,17 +1,63 @@
-name: Deploy Backend to Render
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
-      - main # Adjust if your default branch is not 'main'
+      - main
+  workflow_dispatch: # manuel tetikleme için
 
 jobs:
-  deploy:
+  # 1. Testleri çalıştır
+  test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Trigger Render Deploy Hook
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Cypress Tests on Staging
+        run: npm run test:report
+        env:
+          CYPRESS_BASE_URL: https://durmus-gym-staging.vercel.app
+
+      - name: Upload Cypress Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report
+          path: cypress/reports/html
+
+  # 2. Staging'e deploy
+  deploy-to-staging:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Trigger Vercel Staging Deploy
+        run: curl -X POST ${{ secrets.VERCEL_STAGING_DEPLOY_HOOK_URL }}
+
+      - name: Trigger Render Staging Deploy
+        run: curl -X POST ${{ secrets.RENDER_STAGING_DEPLOY_HOOK_URL }}
+
+  # 3. Production'a deploy (manuel)
+  deploy-to-prod:
+    needs: deploy-to-staging
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Trigger Vercel Production Deploy
+        run: curl -X POST ${{ secrets.VERCEL_PROD_DEPLOY_HOOK_URL }}
+
+      - name: Trigger Render Production Deploy
+        run: curl -X POST ${{ secrets.RENDER_PROD_DEPLOY_HOOK_URL }}
