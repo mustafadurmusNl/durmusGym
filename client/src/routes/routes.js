@@ -13,7 +13,6 @@ import FreeTrialPage from "../pages/FreeTrialPage";
 import PurchasePage from "../pages/PurchasePage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
 import Library from "../components/Library"; // NEW
-import PrivateRoute from "../components/PrivateRoute"; // NEW
 import Profile from "../components/Profile"; // NEW
 import PurchaseSuccess from "../components/PurchaseSuccess"; // NEW
 const createRoute = (path, element) => ({ path, element });
