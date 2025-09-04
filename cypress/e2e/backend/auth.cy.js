@@ -1,7 +1,9 @@
 describe("Auth API", () => {
+  const backendUrl = Cypress.env("BACKEND_URL");
+
   it("should login with valid credentials", () => {
     cy.fixture("users").then((users) => {
-      cy.request("POST", "http://localhost:5000/api/users/login", {
+      cy.request("POST", `${backendUrl}/api/users/login`, {
         email: users.validUser.email,
         password: users.validUser.password,
       }).then((res) => {
@@ -16,9 +18,9 @@ describe("Auth API", () => {
     cy.fixture("users").then((users) => {
       cy.request({
         method: "POST",
-        url: "http://localhost:5000/api/users/login",
+        url: `${backendUrl}/api/users/login`,
         body: users.invalidUser,
-        failOnStatusCode: false, // ❗️ Hata bekliyoruz
+        failOnStatusCode: false, // ❗️ Hata bekleniyor
       }).then((res) => {
         expect(res.status).to.eq(401);
         expect(res.body).to.have.property(

@@ -26,6 +26,7 @@ jobs:
         run: npm run test:report
         env:
           CYPRESS_BASE_URL: https://durmus-gym-staging.vercel.app
+          CYPRESS_BACKEND_URL: https://durmusgym-1.onrender.com
 
       - name: Upload Cypress Report
         uses: actions/upload-artifact@v4

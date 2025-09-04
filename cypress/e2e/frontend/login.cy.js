@@ -1,10 +1,10 @@
 describe("Login Page", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3001/login"); // 👈 React app login page
+    cy.visit("/login"); // 👈 baseUrl otomatik ekleniyor
   });
 
   it("should render login form", () => {
-    cy.contains("Login").should("exist"); // Başlık var mı
+    cy.contains("Login").should("exist");
     cy.get("input[type=email]").should("exist");
     cy.get("input[type=password]").should("exist");
     cy.get("button[type=submit]").should("exist");
@@ -16,8 +16,7 @@ describe("Login Page", () => {
       cy.get("input[type=password]").type(users.validUser.password);
       cy.get("button[type=submit]").click();
 
-      // Login sonrası ana sayfa bekleniyor
-      cy.url().should("eq", "http://localhost:3001/");
+      cy.url().should("eq", `${Cypress.config("baseUrl")}/`);
     });
   });
 
