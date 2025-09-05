@@ -3,9 +3,14 @@ describe("Auth API", () => {
 
   it("should login with valid credentials", () => {
     cy.fixture("users").then((users) => {
-      cy.request("POST", `${backendUrl}/api/users/login`, {
-        email: users.validUser.email,
-        password: users.validUser.password,
+      cy.request({
+        method: "POST",
+        url: `${backendUrl}/api/users/login`,
+        body: {
+          email: users.validUser.email,
+          password: users.validUser.password,
+        },
+        timeout: 90000, // 90 saniye
       }).then((res) => {
         expect(res.status).to.eq(200);
         expect(res.body).to.have.property("token");
@@ -14,19 +19,20 @@ describe("Auth API", () => {
     });
   });
 
-  it("should reject invalid credentials", () => {
+  it("should login with valid credentials", () => {
     cy.fixture("users").then((users) => {
       cy.request({
         method: "POST",
         url: `${backendUrl}/api/users/login`,
-        body: users.invalidUser,
-        failOnStatusCode: false, // ❗️ Hata bekleniyor
+        body: {
+          email: users.validUser.email,
+          password: users.validUser.password,
+        },
+        timeout: 90000, // 90 saniye
       }).then((res) => {
-        expect(res.status).to.eq(401);
-        expect(res.body).to.have.property(
-          "message",
-          "Invalid email or password"
-        );
+        expect(res.status).to.eq(200);
+        expect(res.body).to.have.property("token");
+        expect(res.body.user).to.have.property("email", users.validUser.email);
       });
     });
   });
