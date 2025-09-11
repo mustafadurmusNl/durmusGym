@@ -36,26 +36,44 @@ const HeroHighlights = () => {
   const handleChange = (index) => setActiveIndex(index);
 
   return (
-    <div className="hero-slider">
-      <div className="highlight-slide">
-        <Link to={highlights[activeIndex].link} className="highlight-link">
-          <div className="highlight-item">
-            {highlights[activeIndex].icon}
-            <h3>{highlights[activeIndex].title}</h3>
-            <p>{highlights[activeIndex].desc}</p>
+    <div className="hero-highlights-container">
+      {/* Desktop/Tablet: Show all three vertically */}
+      <div className="highlights-vertical">
+        {highlights.map((highlight, index) => (
+          <div key={index} className="highlight-wrapper">
+            <Link to={highlight.link} className="highlight-link">
+              <div className="highlight-item">
+                {highlight.icon}
+                <h3>{highlight.title}</h3>
+                <p>{highlight.desc}</p>
+              </div>
+            </Link>
           </div>
-        </Link>
+        ))}
       </div>
 
-      <div className="highlight-controls">
-        {highlights.map((_, index) => (
-          <button
-            key={index}
-            className={`dot ${index === activeIndex ? "active" : ""}`}
-            onClick={() => handleChange(index)}
-            aria-label={`Highlight ${index + 1}`}
-          />
-        ))}
+      {/* Mobile: Show slider */}
+      <div className="highlights-slider">
+        <div className="highlight-slide">
+          <Link to={highlights[activeIndex].link} className="highlight-link">
+            <div className="highlight-item">
+              {highlights[activeIndex].icon}
+              <h3>{highlights[activeIndex].title}</h3>
+              <p>{highlights[activeIndex].desc}</p>
+            </div>
+          </Link>
+        </div>
+
+        <div className="highlight-controls">
+          {highlights.map((_, index) => (
+            <button
+              key={index}
+              className={`dot ${index === activeIndex ? "active" : ""}`}
+              onClick={() => handleChange(index)}
+              aria-label={`Highlight ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
