@@ -4,11 +4,25 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # manuel tetikleme için
+  workflow_dispatch: # Manuel tetikleme için
 
 jobs:
-  # 1. Testleri çalıştır
-  test:
+  # 1. Staging'e otomatik olarak deploy et
+  deploy-to-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Trigger Vercel Staging Deploy
+        run: curl -X POST ${{ secrets.VERCEL_STAGING_DEPLOY_HOOK_URL }}
+
+      - name: Trigger Render Staging Deploy
+        run: curl -X POST ${{ secrets.RENDER_STAGING_DEPLOY_HOOK_URL }}
+
+  # 2. Staging ortamında testleri çalıştır
+  test-on-staging:
+    needs: deploy-to-staging # Bu job, staging deploy'dan sonra çalışır
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -25,8 +39,8 @@ jobs:
       - name: Run Cypress Tests on Staging
         run: npm run test:report
         env:
-          CYPRESS_BASE_URL: https://durmus-gym-staging.vercel.app
-          CYPRESS_BACKEND_URL: https://durmusgym-1.onrender.com
+          CYPRESS_BASE_URL: https://durmus-gym-staging.vercel.app # Staging URL'i
+          CYPRESS_BACKEND_URL: https://durmusgym-1.onrender.com # Staging backend URL'i
 
       - name: Upload Cypress Report
         uses: actions/upload-artifact@v4
@@ -34,24 +48,10 @@ jobs:
           name: cypress-report
           path: cypress/reports/html
 
-  # 2. Staging'e deploy
-  deploy-to-staging:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Trigger Vercel Staging Deploy
-        run: curl -X POST ${{ secrets.VERCEL_STAGING_DEPLOY_HOOK_URL }}
-
-      - name: Trigger Render Staging Deploy
-        run: curl -X POST ${{ secrets.RENDER_STAGING_DEPLOY_HOOK_URL }}
-
-  # 3. Production'a deploy (manuel)
+  # 3. Production'a deploy (sadece manuel ve testler başarılıysa)
   deploy-to-prod:
-    needs: deploy-to-staging
-    if: github.event_name == 'workflow_dispatch'
+    needs: test-on-staging # Bu job, testler başarılı olursa çalışır
+    if: github.event_name == 'workflow_dispatch' && success()
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
