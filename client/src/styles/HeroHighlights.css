@@ -1,119 +1,222 @@
-.hero-slider {
+.hero-highlights-container {
+  width: 100%;
+  height: 100%; /* Ebeveyninin yüksekliğini tam olarak almasını sağlar */
   display: flex;
   flex-direction: column;
-  height: 100%; /* ← Ensure it fills its container */
-  justify-content: center;
-  align-items: center;
-  gap: 8px; /* Reduced gap between highlight and dots */
+  margin: 0 auto;
+  padding: 0; /* Padding'i sıfırlıyoruz */
+  box-sizing: border-box;
 }
 
-.highlight-slide {
-  flex: 1; /* Let it grow to use vertical space */
+.highlights-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  height: 100%; /* Dikeyde tam yüksekliği kaplar */
+}
+
+/* Mobile: Hide vertical, show slider */
+.highlights-slider {
+  display: none;
+}
+.highlight-wrapper {
+  flex: 1; /* Her bir highlight öğesinin eşit yükseklikte olmasını sağlar */
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .highlight-link {
   text-decoration: none;
   color: inherit;
-  display: block;
+  display: flex;
   width: 100%;
+  flex: 1; /* Link'in tüm alanı kaplamasını sağlar */
 }
 
 .highlight-item {
-  background: rgba(7, 7, 7, 0.8);
+  background: rgba(140, 3, 3, 0.8);
   border-radius: 12px;
-  padding: 20px 16px;
+  padding: 24px 20px;
   text-align: center;
   box-sizing: border-box;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* İçerik dikeyde ortalanır */
   align-items: center;
   transition: background 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  flex: 1; /* Ebeveynindeki kalan dikey alanı tamamen doldurur */
 }
-
 .highlight-link:hover .highlight-item {
   transform: translateY(-4px);
   background: rgba(0, 0, 0, 0.6);
 }
 
 .highlight-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #1fd312;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  flex-shrink: 0;
 }
 
 .highlight-item h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
   color: #fff;
+  font-weight: 600;
+  flex-shrink: 0;
 }
 
 .highlight-item p {
-  font-size: 0.9rem;
+  /* Bu satırları değiştirin */
+  font-size: 0.8rem;
   color: #ccc;
-  line-height: 1.4;
+  line-height: 1.3;
+  max-width: 280px;
+  flex: 1; /* Paragrafın dikeyde kalan tüm alanı kaplamasını sağlar */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+}
+/* Slider styles for mobile */
+.highlight-slide {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
-/* Dots */
 .highlight-controls {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 4px;
   padding: 8px 0;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   background-color: #ccc;
   border-radius: 50%;
-  border: none;
+  border: 2px solid #1fd312;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .dot.active {
   background-color: #1fd312;
+  border-color: #1fd312;
 }
 
-/* Mobile */
+/* Tablet styles */
+@media (max-width: 1024px) {
+  .hero-highlights-container {
+    padding: 14px;
+  }
+
+  .highlights-vertical {
+    gap: 10px;
+  }
+
+  .highlight-item {
+    padding: 14px 16px;
+  }
+
+  .highlight-icon {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+
+  .highlight-item h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .highlight-item p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile styles - Switch to slider */
 @media (max-width: 600px) {
+  .hero-highlights-container {
+    padding: 12px;
+    height: auto; /* Reset height for mobile */
+  }
+
+  /* Hide vertical layout on mobile */
+  .highlights-vertical {
+    display: none;
+  }
+
+  /* Show slider on mobile */
+  .highlights-slider {
+    display: block;
+  }
+
+  .highlight-item {
+    min-height: 180px;
+    padding: 20px 16px;
+  }
+
+  .highlight-icon {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+
+  .highlight-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .highlight-item p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
   .dot {
     width: 20px;
     height: 20px;
     border: 2px solid #1fd312;
     background-color: #fff;
   }
+
   .dot.active {
     background-color: #1fd312;
     border-color: #1fd312;
   }
-  .hero-slider {
-    gap: 12px;
+}
+
+/* Extra small mobile */
+@media (max-width: 400px) {
+  .hero-highlights-container {
+    padding: 8px;
   }
 
   .highlight-item {
-    height: 180px; /* fixed height to unify size */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    min-height: 160px;
+    padding: 18px 12px;
   }
 
   .highlight-icon {
-    font-size: 1.25rem;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
   }
 
   .highlight-item h3 {
     font-size: 1rem;
+    margin-bottom: 6px;
   }
 
   .highlight-item p {
     font-size: 0.8rem;
+  }
+
+  .dot {
+    width: 18px;
+    height: 18px;
   }
 }

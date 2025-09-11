@@ -11,43 +11,41 @@
 
 .intro-grid {
   display: flex;
+  align-items: stretch; /* İç elemanların en yüksek olanla aynı boyuta gelmesini sağlar */
   width: 100%;
   max-width: 1400px;
-  height: 600px;
+  height: 80vh;
+  min-height: 500px;
+  max-height: 700px;
   gap: 20px;
 }
 
-/* === Column widths === */
+/* Sütunlar için bu değerleri kullanın */
 .intro-left {
-  flex: 0 0 25%;
+  flex: 1; /* Bu sütunun esnek bir şekilde yayılmasını sağlar */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 2px;
-  height: 100%;
+  height: 100%; /* İçindeki HeroHighlights'ın tam yüksekliği alması için */
   box-sizing: border-box;
 }
 
 .intro-middle {
-  flex: 0 0 25%;
+  flex: 1.5; /* Videonun ve metnin olduğu orta sütunu biraz daha genişletir */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 2px;
   height: 100%;
   box-sizing: border-box;
   overflow-y: auto;
 }
 
 .intro-right {
-  flex: 0 0 50%;
+  flex: 2; /* Resmin olduğu sütunu en geniş yapar */
   position: relative;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .intro-image {
   width: 100%;
   height: 100%;
@@ -84,11 +82,22 @@
 }
 
 /* === Responsive === */
+@media (max-width: 1200px) {
+  .intro-grid {
+    height: 70vh;
+    min-height: 450px;
+    max-height: 600px;
+  }
+}
+
 @media (max-width: 1024px) {
   .intro-grid {
     flex-direction: column;
     height: auto;
     gap: 20px;
+    min-height: auto;
+    max-height: none;
+    align-items: stretch;
   }
 
   .intro-left,

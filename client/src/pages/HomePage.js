@@ -18,7 +18,7 @@ const HomePage = () => {
   useEffect(() => {
     const loadImages = async () => {
       try {
-        const [intro] = await fetchImages("intro");
+        const [intro] = await fetchImages("yoga");
         const [personal] = await fetchImages("personal");
 
         setIntroImage(intro);
