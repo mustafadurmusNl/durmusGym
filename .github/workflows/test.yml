@@ -1,0 +1,28 @@
+name: Run Unit Tests
+
+on:
+  pull_request: # PR açıldığında veya güncellendiğinde çalışır
+    branches:
+      - main
+  push: # side branch'e direkt push yapıldığında da çalışır
+    branches-ignore:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Unit Tests (Jest)
+        run: npm test
