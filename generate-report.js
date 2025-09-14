@@ -23,9 +23,9 @@ async function generateReport() {
     console.log("Rapor klasörü ve belgeleri temizleniyor...");
     execSync("npm run clean:all", { stdio: "inherit" });
 
-    // 2. Run Cypress tests
+    // 2. Run Cypress tests using your e2e-test script
     console.log("Cypress testleri çalıştırılıyor...");
-    execSync("npm run cypress:run", { stdio: "inherit" });
+    execSync("npm run e2e-test", { stdio: "inherit" });
 
     // 3. Wait a bit for files to be written
     console.log("JSON raporlarının oluşturulması bekleniyor...");
