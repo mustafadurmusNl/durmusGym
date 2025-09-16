@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # Manuel tetikleme için
+  workflow_dispatch: # For manual triggering
 
 jobs:
-  # 1. Staging'e otomatik olarak deploy et
+  # 1. Automatically deploy to staging
   deploy-to-staging:
     runs-on: ubuntu-latest
     steps:
@@ -20,9 +20,9 @@ jobs:
       - name: Trigger Render Staging Deploy
         run: curl -X POST ${{ secrets.RENDER_STAGING_DEPLOY_HOOK_URL }}
 
-  # 2. Staging ortamında testleri çalıştır
+  # 2. Run tests on the staging environment
   test-on-staging:
-    needs: deploy-to-staging # Bu job, staging deploy'dan sonra çalışır
+    needs: deploy-to-staging # This job runs after the staging deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -39,8 +39,8 @@ jobs:
       - name: Run Cypress Tests on Staging
         run: npm run test:report
         env:
-          CYPRESS_BASE_URL: https://durmus-gym-staging.vercel.app # Staging URL'i
-          CYPRESS_BACKEND_URL: https://durmusgym-1.onrender.com # Staging backend URL'i
+          CYPRESS_BASE_URL: https://durmus-gym-staging.vercel.app # Staging URL
+          CYPRESS_BACKEND_URL: https://durmusgym-1.onrender.com # Staging backend URL
 
       - name: Upload Cypress Report
         uses: actions/upload-artifact@v4
@@ -48,9 +48,9 @@ jobs:
           name: cypress-report
           path: cypress/reports/html
 
-  # 3. Production'a deploy (sadece manuel ve testler başarılıysa)
+  # 3. Deploy to production (manual only and if tests are successful)
   deploy-to-prod:
-    needs: test-on-staging # Bu job, testler başarılı olursa çalışır
+    needs: test-on-staging # This job runs if the tests are successful
     if: github.event_name == 'workflow_dispatch' && success()
     runs-on: ubuntu-latest
     steps:
