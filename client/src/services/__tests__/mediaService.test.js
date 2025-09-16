@@ -5,11 +5,16 @@ import axios from "axios";
 
 jest.mock("axios");
 
-describe("fetchImages", () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
+// console.error loglarını sustur
+beforeEach(() => {
+  jest.spyOn(console, "error").mockImplementation(() => {});
+});
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
+describe("fetchImages", () => {
   it("should return images when API call is successful", async () => {
     axios.get.mockResolvedValueOnce({ data: mockImages });
 
