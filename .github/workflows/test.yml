@@ -1,12 +1,12 @@
 name: Unit Tests
 
 on:
-  pull_request: # PR açıldığında veya güncellendiğinde çalışır
+  pull_request: # Runs when a PR is opened or updated
     branches:
       - main
-    types: [opened, synchronize, reopened] # PR durumları
+    types: [opened, synchronize, reopened] # PR states
 
-  push: # Side branch'e direkt push yapıldığında da çalışır
+  push: # Also runs on direct pushes to side branches
     branches-ignore:
       - main
 
@@ -14,7 +14,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    # Job başarısız olursa PR merge edilemesin
+    # Prevents PR from being merged if the job fails
     permissions:
       contents: read
       checks: write
@@ -28,21 +28,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: "npm" # npm cache için hızlandırma
+          cache: "npm" # Speeds up npm caching
 
       - name: Install Dependencies
         run: |
-          npm ci # npm install yerine npm ci (daha hızlı ve güvenli)
+          npm ci # Using npm ci instead of npm install (faster and more secure)
 
       - name: Run Unit Tests (Jest)
         run: |
           npm test -- --passWithNoTests --watchAll=false --coverage
         env:
-          CI: true # Jest'e CI ortamında çalıştığını bildir
+          CI: true # Informs Jest that it's running in a CI environment
 
       - name: Upload Coverage Reports
         uses: codecov/codecov-action@v3
-        if: success() || failure() # Test fail olsa bile coverage raporunu upload et
+        if: success() || failure() # Uploads coverage report even if the test fails
         with:
           file: ./coverage/lcov.info
           fail_ci_if_error: false
