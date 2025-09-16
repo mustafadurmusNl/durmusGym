@@ -20,15 +20,15 @@ async function generateReport() {
 
   try {
     // 1. Clean old reports
-    console.log("Rapor klasörü ve belgeleri temizleniyor...");
+    console.log("Cleaning report directory and documentation...");
     execSync("npm run clean:all", { stdio: "inherit" });
 
     // 2. Run Cypress tests using your e2e-test script
-    console.log("Cypress testleri çalıştırılıyor...");
+    console.log("Running Cypress tests...");
     execSync("npm run e2e-test", { stdio: "inherit" });
 
     // 3. Wait a bit for files to be written
-    console.log("JSON raporlarının oluşturulması bekleniyor...");
+    console.log("Waiting for JSON reports to be generated...");
     await delay(2000);
 
     // 4. Find mochawesome JSON files
@@ -41,14 +41,14 @@ async function generateReport() {
         );
     } catch {
       console.error(
-        "Hata: 'cypress/reports' klasörü bulunamadı veya okunamadı."
+        "Error: The 'cypress/reports' folder was not found or could not be read."
       );
       process.exit(1);
     }
 
     if (reportFiles.length === 0) {
       console.warn(
-        "Uyarı: Birleştirilecek JSON raporu bulunamadı. Raporlama atlanıyor."
+        "Warning: No JSON reports found to merge. Skipping report generation."
       );
       process.exit(0);
     }
@@ -56,26 +56,29 @@ async function generateReport() {
     const jsonPaths = reportFiles.map((file) => path.join(reportsDir, file));
 
     // 5. Merge JSON reports
-    console.log("Rapor dosyaları birleştiriliyor...");
+    console.log("Merging report files...");
     const mergedReport = await merge({ files: jsonPaths });
     fs.writeFileSync(mergedReportPath, JSON.stringify(mergedReport, null, 2));
 
     // 6. Generate HTML report
-    console.log("HTML raporu oluşturuluyor...");
+    console.log("Generating HTML report...");
     await generator.create(mergedReport, {
       reportDir: htmlReportDir,
       inlineAssets: true,
     });
 
     // 7. Copy report to docs folder
-    console.log("Oluşturulan rapor docs klasörüne kopyalanıyor...");
+    console.log("Copying the generated report to the docs folder...");
     execSync(`npx cpx "${htmlReportDir}/**/*" "${docsDir}"`, {
       stdio: "inherit",
     });
 
-    console.log("Raporlama işlemi başarıyla tamamlandı!");
+    console.log("Reporting process completed successfully!");
   } catch (error) {
-    console.error("Raporlama işlemi sırasında bir hata oluştu:", error.message);
+    console.error(
+      "An error occurred during the reporting process:",
+      error.message
+    );
     process.exit(1);
   }
 }
