@@ -9,7 +9,6 @@ const SecureVideoPlayer = ({ videoId, token, autoPlay = true }) => {
   const [status, setStatus] = useState("idle"); // idle | loading | ready | error
   const [errorMsg, setErrorMsg] = useState("");
   const abortRef = useRef(null);
-  console.log("helloooo", token, videoId);
   useEffect(() => {
     if (!videoId || !token) return;
 
@@ -112,6 +111,7 @@ const SecureVideoPlayer = ({ videoId, token, autoPlay = true }) => {
         outline: "none",
       }}
       src={objectUrl}
+      data-testid="secure-video" // <- bunu ekledik
     />
   );
 };
